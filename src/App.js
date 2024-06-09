@@ -25,8 +25,8 @@ function App() {
             <HeaderContent title="Lista zadań" children={<Buttons tasks={tasks} hideDoneTasks={hideDoneTasks} />} />
             <Stats tasks={tasks} />
             <Tasks tasks={tasks} hideDoneTasks={hideDoneTasks} />
-          </React.Fragment>
-        } />
+          </React.Fragment>}
+      />
     </React.Fragment >
   );
 };

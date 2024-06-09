@@ -7,8 +7,7 @@ const Stats = ({ tasks }) => (
                 Liczba wszystkich zadań: {tasks.length}
             </p>
             <p className="stats__item stats__item--finishedTasks" >
-                Liczba ukończonych zadań:
-                {tasks.filter(({ done }) => done).length}
+                Liczba ukończonych zadań: {tasks.filter(({ done }) => done).length}
             </p>
         </section>
 

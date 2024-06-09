@@ -13,7 +13,9 @@ const Tasks = ({ tasks, hideDoneTasks }) => (
                             <p className={`tasks__content ${done ? 'tasks__content--done' : ''}`}>
                                 {content}
                             </p>
-                            <button className="tasks__button">🗑️</button>
+                            <button className="tasks__button">
+                                🗑️
+                            </button>
                         </li>
                     );
             })
