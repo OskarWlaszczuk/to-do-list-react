@@ -28,10 +28,6 @@
     }
 }
 
-.tasks__item--hidden {
-    display: none;
-}
-
 .tasks__button {
     border: none;
     color: white;
