@@ -8,7 +8,7 @@ import Stats from "./Stats";
 import Tasks from "./Tasks";
 
 const tasks = [
-  { id: 1, content: "Nakarmić psa", done: false },
+  { id: 1, content: "Nakarmić psa", done: true },
   { id: 2, content: "Przygotować obiad", done: true },
 ];
 
