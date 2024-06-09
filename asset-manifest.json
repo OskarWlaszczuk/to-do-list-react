@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/oskarwlaszczuk.github.io/to-do-list-react/static/css/main.4d6531d5.css",
-    "main.js": "/oskarwlaszczuk.github.io/to-do-list-react/static/js/main.88a627b1.js",
+    "main.css": "/oskarwlaszczuk.github.io/to-do-list-react/static/css/main.98c606a8.css",
+    "main.js": "/oskarwlaszczuk.github.io/to-do-list-react/static/js/main.80717a0d.js",
     "static/js/453.3dd2d477.chunk.js": "/oskarwlaszczuk.github.io/to-do-list-react/static/js/453.3dd2d477.chunk.js",
     "index.html": "/oskarwlaszczuk.github.io/to-do-list-react/index.html",
-    "main.4d6531d5.css.map": "/oskarwlaszczuk.github.io/to-do-list-react/static/css/main.4d6531d5.css.map",
-    "main.88a627b1.js.map": "/oskarwlaszczuk.github.io/to-do-list-react/static/js/main.88a627b1.js.map",
+    "main.98c606a8.css.map": "/oskarwlaszczuk.github.io/to-do-list-react/static/css/main.98c606a8.css.map",
+    "main.80717a0d.js.map": "/oskarwlaszczuk.github.io/to-do-list-react/static/js/main.80717a0d.js.map",
     "453.3dd2d477.chunk.js.map": "/oskarwlaszczuk.github.io/to-do-list-react/static/js/453.3dd2d477.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4d6531d5.css",
-    "static/js/main.88a627b1.js"
+    "static/css/main.98c606a8.css",
+    "static/js/main.80717a0d.js"
   ]
 }
