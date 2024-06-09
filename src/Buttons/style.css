@@ -1,0 +1,22 @@
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.buttons__managmentButton {
+    color: #287792;
+    background-color: transparent;
+    border: none;
+    transition: 0.3s;
+    margin: 3px;
+    text-align: center;
+}
+
+.buttons__managmentButton:hover {
+    color: rgb(8, 187, 187);
+}
+
+.buttons__managmentButton:disabled {
+    color: #44545a82;
+}

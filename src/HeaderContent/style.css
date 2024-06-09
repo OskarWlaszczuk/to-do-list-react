@@ -1,0 +1,28 @@
+.headerContent {
+    display: grid;
+    grid-gap: 10px;
+    align-items: center;
+    padding: 15px;
+    grid-template-columns: repeat(2, 1fr);
+    border-bottom: 2px solid rgba(179, 174, 174, 0.742);
+}
+
+@media (max-width:767px) {
+    .headerContent {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(2, 1fr);
+    }
+}
+
+.headerContent__header {
+    font-weight: bold;
+    font-size: 25px;
+    justify-self: start;
+    padding: 10px;
+}
+
+@media (max-width:767px) {
+    .headerContent__headers {
+        justify-self: center;
+    }
+}

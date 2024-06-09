@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import MainHeader from "./MainHeader";
+import Form from "./Form";
+import Section from "./Section";
+import HeaderContent from "./HeaderContent";
+import Buttons from "./Buttons";
+import Stats from "./Stats";
+import Tasks from "./Tasks";
+
+const tasks = [
+  { id: 1, content: "Nakarmić psa", done: true },
+  { id: 2, content: "Przygotować obiad", done: true },
+];
+
+const hideDoneTasks = false;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      <MainHeader />
+      <Form />
+      <Section
+        children={
+          <React.Fragment>
+            <HeaderContent title="Lista zadań" children={<Buttons tasks={tasks} hideDoneTasks={hideDoneTasks} />} />
+            <Stats tasks={tasks} />
+            <Tasks tasks={tasks} hideDoneTasks={hideDoneTasks} />
+          </React.Fragment>
+        } />
+    </React.Fragment >
   );
-}
+};
 
 export default App;
