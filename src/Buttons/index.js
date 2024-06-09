@@ -4,7 +4,7 @@ const Buttons = ({ tasks, hideDoneTasks }) => (
     tasks.length > 0 && (
         <section className="buttons">
             <button className="buttons__managmentButton">
-                {hideDoneTasks ? 'Pokaż' : 'Ukryj'} ukończone
+                {hideDoneTasks && tasks.some(({ done }) => done) ? 'Pokaż' : 'Ukryj'} ukończone
             </button>
             <button disabled={tasks.every(({ done }) => done)}
                 className="buttons__managmentButton">
