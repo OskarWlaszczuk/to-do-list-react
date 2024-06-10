@@ -1,7 +1,7 @@
 import "./style.css";
 
 const Tasks = ({ tasks, hideDoneTasks }) => (
-    <ul>
+    <ul className="tasks">
         {
             tasks.map(({ id, done, content }) => {
                 return (!hideDoneTasks || (hideDoneTasks && !done)) &&
