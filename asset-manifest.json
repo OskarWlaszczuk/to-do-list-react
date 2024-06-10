@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/oskarwlaszczuk.github.io/to-do-list-react/static/css/main.98c606a8.css",
-    "main.js": "/oskarwlaszczuk.github.io/to-do-list-react/static/js/main.c1ceae92.js",
+    "main.js": "/oskarwlaszczuk.github.io/to-do-list-react/static/js/main.8daa2158.js",
     "static/js/453.3dd2d477.chunk.js": "/oskarwlaszczuk.github.io/to-do-list-react/static/js/453.3dd2d477.chunk.js",
     "index.html": "/oskarwlaszczuk.github.io/to-do-list-react/index.html",
     "main.98c606a8.css.map": "/oskarwlaszczuk.github.io/to-do-list-react/static/css/main.98c606a8.css.map",
-    "main.c1ceae92.js.map": "/oskarwlaszczuk.github.io/to-do-list-react/static/js/main.c1ceae92.js.map",
+    "main.8daa2158.js.map": "/oskarwlaszczuk.github.io/to-do-list-react/static/js/main.8daa2158.js.map",
     "453.3dd2d477.chunk.js.map": "/oskarwlaszczuk.github.io/to-do-list-react/static/js/453.3dd2d477.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.98c606a8.css",
-    "static/js/main.c1ceae92.js"
+    "static/js/main.8daa2158.js"
   ]
 }
