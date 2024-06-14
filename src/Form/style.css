@@ -25,6 +25,12 @@
     border-radius: 5px;
 }
 
+@media (max-width:767px) {
+    .form__input {
+        padding: 2%;
+    }
+}
+
 .form__button {
     color: white;
     background-color: teal;
@@ -52,12 +58,14 @@
     grid-template-columns: 1fr 25%;
     grid-gap: 15px;
     padding: 20px;
+    justify-content: center;
 }
 
 @media (max-width:767px) {
     .form__gridContainer {
-        grid-template-columns: 1fr;
+        grid-template-columns: 90%;
         grid-template-rows: repeat(2, minmax(auto, 1fr));
         grid-gap: 5px;
+        padding: 8px;
     }
 }
