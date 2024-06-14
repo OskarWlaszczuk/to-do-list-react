@@ -22,7 +22,14 @@
     }
 }
 
-@media (max-width:550px) {
+
+@media (max-width:475px) {
+    .tasks__item {
+        grid-template-columns: 0.75fr 1.5fr 0.75fr;
+    }
+}
+
+@media (max-width:350px) {
     .tasks__item {
         grid-template-columns: repeat(3, 1fr);
     }
