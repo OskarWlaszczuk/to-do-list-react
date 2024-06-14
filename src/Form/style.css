@@ -32,6 +32,7 @@
 }
 
 .form__button {
+    text-wrap: nowrap;
     color: white;
     background-color: teal;
     padding: 10px;
@@ -55,7 +56,7 @@
 
 .form__gridContainer {
     display: grid;
-    grid-template-columns: 1fr 25%;
+    grid-template-columns: 1fr 30%;
     grid-gap: 15px;
     padding: 20px;
     justify-content: center;
@@ -66,6 +67,6 @@
         grid-template-columns: 90%;
         grid-template-rows: repeat(2, minmax(auto, 1fr));
         grid-gap: 5px;
-        padding: 8px;
+        padding: 15px 8px;
     }
 }
