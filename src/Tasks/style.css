@@ -22,23 +22,10 @@
     }
 }
 
-
-@media (max-width:475px) {
-    .tasks__item {
-        grid-template-columns: 0.75fr 1.5fr 0.75fr;
-    }
-}
-
-@media (max-width:350px) {
-    .tasks__item {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
 .tasks__button {
     border: none;
     color: white;
-    margin: 10px;
+    margin: 0px;
     padding: 10px;
     border-radius: 5px;
     border: 3px solid #ab0929;
