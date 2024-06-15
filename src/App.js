@@ -10,10 +10,7 @@ import Tasks from "./Tasks";
 function App() {
   const [hideDoneTasks, setHideDoneTasks] = useState(false);
 
-  const [tasks, setTasks] = useState([
-    { id: 1, content: "Nakarmić psa", done: true },
-    { id: 2, content: "Przygotować obiad", done: false },
-  ]);
+  const [tasks, setTasks] = useState([]);
 
   const toggleHideDoneTasks = () => {
     setHideDoneTasks(hideDoneTasks => (
@@ -43,10 +40,26 @@ function App() {
     )));
   };
 
+  const addNewTaskContent = content => {
+    setTasks(tasks => [
+      ...tasks,
+      {
+        content,
+        done: false,
+        id:
+          tasks.length === 0 ?
+            1 :
+            tasks[tasks.length - 1].id + 1
+      },
+    ]);
+  };
+
   return (
     <React.Fragment>
       <MainHeader />
-      <Form />
+      <Form
+        addNewTaskContent={addNewTaskContent}
+      />
       <Section
         children={
           <React.Fragment>
