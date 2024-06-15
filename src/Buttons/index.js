@@ -12,6 +12,7 @@ const Buttons = ({ tasks, hideDoneTasks, toggleHideDoneTasks, toggleAllTaskDone 
             <button
                 disabled={tasks.every(({ done }) => done)}
                 className="buttons__managmentButton"
+                onClick={toggleAllTaskDone}
             >
                 Ukończ wszystkie
             </button>
