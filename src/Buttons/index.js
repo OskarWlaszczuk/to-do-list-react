@@ -1,9 +1,12 @@
 import "./style.css";
 
-const Buttons = ({ tasks, hideDoneTasks }) => (
+const Buttons = ({ tasks, hideDoneTasks, toggleHideDoneTasks, toggleAllTaskDone }) => (
     tasks.length > 0 && (
         <section className="buttons">
-            <button className="buttons__managmentButton">
+            <button
+                className="buttons__managmentButton"
+                onClick={toggleHideDoneTasks}
+            >
                 {hideDoneTasks && tasks.some(({ done }) => done) ? 'Pokaż' : 'Ukryj'} ukończone
             </button>
             <button
