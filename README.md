@@ -47,15 +47,6 @@ I did this project, as part of the programming course, named *YouCode*, and I tr
 
 >Multiple tasks, will locate under each other in order from oldest to newest added.
 ---
-## Optional user interactions
-- You can hide/show finished tasks, by clicking button named *"Ukryj ukończone"* (eng. *"Hide doned"*). You are able to display back hidden tasks, by clicking the button again.
-- You can quickly finish all tasks on the list, by clicking button named *"Ukończ wszystkie"* (eng. *"finish all"*). After click, the button will become disable to interact, unless you add new unfinished task.
-
-## Tasks statistics
-
-You can track informations, about your tasks list, thanks to the Stats Section. This section allows you to:
-- check total tasks list length in green paragraph
-- check amount of doned tasks in purple paragraph
 
 ## Full gif guide
 
@@ -64,6 +55,21 @@ Belowe, I posted full gif guide of using To-Do List, where i captured its all po
 ![Project gif guide](https://raw.githubusercontent.com/OskarWlaszczuk/to-do-list-react/f9d72b1c500451ab82782b08cc01e9f30ad27ff5/public/project-gif-readme.gif)
 
 > I created above gif, using *ScreenToGif* app
+
+
+## Optional user interactions
+- You can hide/show finished tasks, by clicking button named *"Ukryj ukończone"* (eng. *"Hide doned"*). You are able to display back hidden tasks, by clicking the button again.
+- You can quickly finish all tasks on the list, by clicking button named *"Ukończ wszystkie"* (eng. *"finish all"*). After click, the button will become disable to interact, unless you add new unfinished task.
+
+>![buttons-interaction-gif](https://raw.githubusercontent.com/OskarWlaszczuk/to-do-list-react/6459ce92a813809f573707bf1791c16adc13790d/src/images/project-buttons-gif-readme.gif)
+
+## Tasks statistics
+
+You can track informations, about your tasks list, thanks to the Stats Section. This section allows you to:
+- check total tasks list length in green paragraph
+- check amount of doned tasks in purple paragraph
+
+>![Stats-interaction-gif](https://raw.githubusercontent.com/OskarWlaszczuk/to-do-list-react/5f6127e0d9b4061b0b3525e9bc064bde9c4a3828/src/images/project-stats-gif-readme.gif)
 
 ## Available Scripts
 
