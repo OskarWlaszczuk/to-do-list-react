@@ -27,7 +27,7 @@
 
 @media (max-width:767px) {
     .form__input {
-        padding: 2%;
+        text-align: center;
     }
 }
 
@@ -58,15 +58,13 @@
     display: grid;
     grid-template-columns: 1fr 30%;
     grid-gap: 15px;
-    padding: 20px;
-    justify-content: center;
+    padding: 10px;
 }
 
 @media (max-width:767px) {
     .form__gridContainer {
-        grid-template-columns: 90%;
+        grid-template-columns: 100%;
         grid-template-rows: repeat(2, minmax(auto, 1fr));
         grid-gap: 5px;
-        padding: 15px 8px;
     }
 }

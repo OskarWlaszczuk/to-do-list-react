@@ -1,18 +1,17 @@
 .stats {
     display: grid;
-    grid-template-columns: repeat(2, auto);
-    justify-content: space-around;
+    grid-template-columns: repeat(2, 48%);
+    justify-content: space-between;
     border-bottom: none;
+    margin-top: 15px;
 }
 
 @media (max-width:920px) {
     .stats {
         display: grid;
-        grid-template-columns: 85%;
+        grid-template-columns: 100%;
         grid-template-rows: repeat(2, 1fr);
-        padding: 5px;
         grid-gap: 5%;
-        justify-content: center;
         border-bottom: none;
     }
 }
@@ -25,13 +24,13 @@
     text-decoration: underline;
     text-wrap: nowrap;
     margin: 5px 0;
-    padding: 15px;
-    line-height: 1.5;
+    padding: 3%;
+
 }
 
-@media (max-width:650px) {
+@media (max-width: 425px) {
     .stats__item {
-        padding: 10px;
+        font-size: smaller;
     }
 }
 

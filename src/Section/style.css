@@ -4,13 +4,13 @@
     border-radius: 3px;
     box-shadow: 0px 0px 11px -3px #525251be;
     width: 60%;
-    min-height: 100px;
     margin-top: 15px;
+    padding: 1.5%;
 }
 
 @media (max-width:767px) {
     .section {
         width: 80%;
-        margin-bottom: 10px;
+        padding: 3%;
     }
 }

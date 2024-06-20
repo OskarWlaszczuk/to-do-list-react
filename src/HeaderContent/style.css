@@ -2,12 +2,14 @@
     display: grid;
     grid-gap: 10px;
     align-items: center;
-    padding: 15px;
+    padding: 15px 0px;
     grid-template-columns: repeat(2, 1fr);
     border-bottom: 2px solid rgba(179, 174, 174, 0.742);
+    padding-top: 0px;
+    padding-bottom: 15px;
 }
 
-@media (max-width:767px) {
+@media (max-width:950px) {
     .headerContent {
         grid-template-columns: 1fr;
         grid-template-rows: repeat(2, 1fr);
@@ -17,12 +19,11 @@
 .headerContent__header {
     font-weight: bold;
     font-size: 25px;
-    justify-self: start;
-    padding: 10px;
 }
 
-@media (max-width:767px) {
-    .headerContent__headers {
+@media (max-width:450px) {
+    .headerContent__header {
         justify-self: center;
+        text-align: center;
     }
 }
