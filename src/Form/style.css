@@ -25,12 +25,6 @@
     border-radius: 5px;
 }
 
-@media (max-width:767px) {
-    .form__input {
-        text-align: center;
-    }
-}
-
 .form__button {
     text-wrap: nowrap;
     color: white;
@@ -46,7 +40,7 @@
 
 .form__button:hover {
     background-color: rgb(52, 157, 157);
-    transform: scaleX(105%);
+    transform: scaleX(102%);
     transition: 0.2s linear;
 }
 
