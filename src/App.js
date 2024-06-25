@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import MainHeader from "./MainHeader";
 import Form from "./Form";
 import Section from "./Section";
@@ -9,8 +9,11 @@ import Tasks from "./Tasks";
 
 function App() {
   const [hideDoneTasks, setHideDoneTasks] = useState(false);
+  const [tasks, setTasks] = useState(JSON.parse(localStorage.getItem('tasksListItems')));
 
-  const [tasks, setTasks] = useState([]);
+  useEffect(() => {
+    localStorage.setItem('tasksListItems', JSON.stringify(tasks));
+  });
 
   const toggleHideDoneTasks = () => {
     setHideDoneTasks(hideDoneTasks => (
@@ -59,9 +62,7 @@ function App() {
   return (
     <React.Fragment>
       <MainHeader />
-      <Form
-        addNewTaskContent={addNewTaskContent}
-      />
+      <Form addNewTaskContent={addNewTaskContent} />
       <Section
         children={
           <React.Fragment>
