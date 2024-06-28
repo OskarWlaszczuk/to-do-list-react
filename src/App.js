@@ -9,8 +9,6 @@ import Tasks from "./Tasks";
 
 function App() {
   const [hideDoneTasks, setHideDoneTasks] = useState(false);
-
-
   const [tasks, setTasks] = useState(
     tasks ?
       JSON.parse(localStorage.getItem('tasksListItems')) :
