@@ -15,7 +15,7 @@ function App() {
 
   useEffect(() => {
     localStorage.setItem('tasksListItems', JSON.stringify(tasks));
-  });
+  }, [tasks]);
 
   const toggleHideDoneTasks = () => {
     setHideDoneTasks(hideDoneTasks => (
