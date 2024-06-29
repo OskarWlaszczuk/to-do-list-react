@@ -13,7 +13,7 @@ function App() {
   const localeStorageParsed = JSON.parse(localStorage.getItem('tasksListItems'))
 
   const [tasks, setTasks] = useState(
-    localeStorageParsed || [{ content: "Dokręcić śrubę na treningu", done: false, id: 1 }]
+    localeStorageParsed || []
   );
 
   useEffect(() => {
