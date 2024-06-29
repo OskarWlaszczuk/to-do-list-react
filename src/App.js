@@ -9,8 +9,11 @@ import Tasks from "./Tasks";
 
 function App() {
   const [hideDoneTasks, setHideDoneTasks] = useState(false);
+
+  const localeStorageParsed = JSON.parse(localStorage.getItem('tasksListItems'))
+
   const [tasks, setTasks] = useState(
-    JSON.parse(localStorage.getItem('tasksListItems')) || []
+    localeStorageParsed || [{ content: "Dokręcić śrubę na treningu", done: false, id: 1 }]
   );
 
   useEffect(() => {
