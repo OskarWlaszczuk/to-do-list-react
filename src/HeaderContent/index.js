@@ -1,12 +1,12 @@
-import "./style.css";
+import { Container, Header } from "./styled";
 
 const HeaderContent = ({ children }) => (
-    <div className="headerContent">
-        <header className="headerContent__header">
+    <Container>
+        <Header className="headerContent__header">
             Lista Zadań
-        </header>
+        </Header>
         {children}
-    </div>
+    </Container>
 );
 
 export default HeaderContent;

@@ -1,9 +1,9 @@
-import "./style.css";
+import { Content } from "./styled";
 
 const Section = ({ children }) => (
-    <section className="section">
+    <Content>
         {children}
-    </section>
+    </Content>
 );
 
 export default Section;

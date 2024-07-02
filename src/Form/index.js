@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./style.css";
+import { TaskForm, Header, Container, Input, Button } from "./styled";
 
 const Form = ({ addNewTaskContent }) => {
     const [newTaskContent, setNewTaskContent] = useState("Zagrać w Wiedźmina");
@@ -14,25 +14,21 @@ const Form = ({ addNewTaskContent }) => {
     };
 
     return (
-        <form
-            onSubmit={onFormSubmit}
-            className="form " >
-            <header className="form__header">
+        <TaskForm onSubmit={onFormSubmit}>
+            <Header>
                 Dodaj nowe zadanie
-            </header>
-            <div className="form__gridContainer">
-                <input
+            </Header>
+            <Container>
+                <Input
                     value={newTaskContent}
                     onChange={onInputChange}
                     required
                     autoFocus
                     placeholder="Co jest do zrobienia"
-                    className="form__input"
                     type="text"
                     name="newTask"
                 />
-                <button
-                    className="form__button"
+                <Button
                     onClick={() => {
                         newTaskContent && (
                             addNewTaskContent(newTaskContent)
@@ -40,9 +36,9 @@ const Form = ({ addNewTaskContent }) => {
                     }}
                 >
                     Dodaj zadanie
-                </button>
-            </div>
-        </form >
+                </Button>
+            </Container>
+        </TaskForm >
     );
 };
 export default Form;
