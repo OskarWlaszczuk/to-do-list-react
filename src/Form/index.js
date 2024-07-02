@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { TaskForm, Header, Container, Input, Button } from "./styled";
 
 const Form = ({ addNewTaskContent }) => {
     const [newTaskContent, setNewTaskContent] = useState("Zagrać w Wiedźmina");
+    const inputElement = useRef(null);
+
+    const focusOnInput = () => inputElement.current.focus();
 
     const onFormSubmit = event => {
         event.preventDefault();
@@ -20,6 +23,7 @@ const Form = ({ addNewTaskContent }) => {
             </Header>
             <Container>
                 <Input
+                    ref={inputElement}
                     value={newTaskContent}
                     onChange={onInputChange}
                     required
@@ -30,6 +34,7 @@ const Form = ({ addNewTaskContent }) => {
                 />
                 <Button
                     onClick={() => {
+                        focusOnInput();
                         newTaskContent && (
                             addNewTaskContent(newTaskContent)
                         );
