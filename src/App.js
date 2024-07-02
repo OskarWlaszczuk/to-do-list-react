@@ -6,6 +6,19 @@ import HeaderContent from "./HeaderContent";
 import Buttons from "./Buttons";
 import Stats from "./Stats";
 import Tasks from "./Tasks";
+import { ThemeProvider } from "styled-components";
+
+const theme = {
+  mainColor: {
+    color: "teal",
+  },
+  breakPoints: {
+    smallLaptop: 950,
+    tabletHorizontal: 767,
+    mobileL: 450,
+    mobileM: 370,
+  }
+};
 
 function App() {
   const [hideDoneTasks, setHideDoneTasks] = useState(false);
@@ -65,7 +78,7 @@ function App() {
   };
 
   return (
-    <React.Fragment>
+    <ThemeProvider theme={theme}>
       <MainHeader />
       <Form addNewTaskContent={addNewTaskContent} />
       <Section
@@ -90,7 +103,7 @@ function App() {
             />
           </React.Fragment>}
       />
-    </React.Fragment >
+    </ThemeProvider>
   );
 };
 
