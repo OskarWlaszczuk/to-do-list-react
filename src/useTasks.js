@@ -1,15 +1,8 @@
 import { useEffect, useState } from "react";
+import { useLocaleStorage } from "./useLocaleStorage"
 
 export const useTasks = () => {
-
-    const getInitialTasks = () => {
-        const localeStorageParsed = JSON.parse(localStorage.getItem('tasksListItems'))
-        if (localeStorageParsed) {
-            return localeStorageParsed;
-        };
-
-        return [];
-    };
+    const getInitialTasks = useLocaleStorage();
 
     const [tasks, setTasks] = useState(
         getInitialTasks
