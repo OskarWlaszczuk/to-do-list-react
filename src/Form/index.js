@@ -3,13 +3,17 @@ import { TaskForm, Header, Container, Input, Button } from "./styled";
 
 const Form = ({ addNewTaskContent }) => {
     const [newTaskContent, setNewTaskContent] = useState("Zagrać w Wiedźmina");
-    const inputElement = useRef(null);
+    const inputRef = useRef(null);
 
-    const focusOnInput = () => inputElement.current.focus();
+    const focusOnInput = () => inputRef.current.focus();
 
     const onFormSubmit = event => {
         event.preventDefault();
+        focusOnInput();
         setNewTaskContent("");
+        newTaskContent && (
+            addNewTaskContent(newTaskContent)
+        );
     };
 
     const onInputChange = ({ target }) => {
@@ -23,7 +27,7 @@ const Form = ({ addNewTaskContent }) => {
             </Header>
             <Container>
                 <Input
-                    ref={inputElement}
+                    ref={inputRef}
                     value={newTaskContent}
                     onChange={onInputChange}
                     required
@@ -32,16 +36,7 @@ const Form = ({ addNewTaskContent }) => {
                     type="text"
                     name="newTask"
                 />
-                <Button
-                    onClick={() => {
-                        focusOnInput();
-                        newTaskContent && (
-                            addNewTaskContent(newTaskContent)
-                        );
-                    }}
-                >
-                    Dodaj zadanie
-                </Button>
+                <Button type="submit">Dodaj zadanie</Button>
             </Container>
         </TaskForm >
     );
