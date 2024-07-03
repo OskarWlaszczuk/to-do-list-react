@@ -6,9 +6,7 @@ import HeaderContent from "./HeaderContent";
 import Buttons from "./Buttons";
 import Stats from "./Stats";
 import Tasks from "./Tasks";
-import { ThemeProvider } from "styled-components";
 import { useTasks } from "./useTasks";
-import { theme } from "./theme";
 
 function App() {
   const [hideDoneTasks, setHideDoneTasks] = useState(false);
@@ -30,7 +28,7 @@ function App() {
   };
 
   return (
-    <ThemeProvider theme={theme}>
+    <>
       <MainHeader />
       <Form addNewTaskContent={addNewTaskContent} />
       <Section
@@ -55,7 +53,7 @@ function App() {
             />
           </React.Fragment>}
       />
-    </ThemeProvider>
+    </>
   );
 };
 
