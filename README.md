@@ -14,7 +14,7 @@ I did this project, as part of the programming course, named *YouCode*, and I tr
 
 ![To-Do List project screenshot](https://raw.githubusercontent.com/OskarWlaszczuk/to-do-list-react/82d028da17d921d86eec9a199fc8d89ba5224412/public/project-screenshot-readme.png)
 
-## Languages & Conventions
+## Languages, Conventions & Freamworks
 
 - **HTML**
 ---
@@ -32,6 +32,11 @@ I did this project, as part of the programming course, named *YouCode*, and I tr
 ---
 - **Java Script**
     - ECMAScript 6+
+---
+- **React**
+    - Custom hooks
+    - Styled-components
+    - Hooks
 ---
 - OpenGraph Protocol
 - BEM Covention
