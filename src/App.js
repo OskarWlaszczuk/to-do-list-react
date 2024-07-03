@@ -8,18 +8,7 @@ import Stats from "./Stats";
 import Tasks from "./Tasks";
 import { ThemeProvider } from "styled-components";
 import { useTasks } from "./useTasks";
-
-const theme = {
-  mainColor: {
-    color: "teal",
-  },
-  breakPoints: {
-    smallLaptop: 950,
-    tabletHorizontal: 767,
-    mobileL: 450,
-    mobileM: 370,
-  }
-};
+import { theme } from "./theme";
 
 function App() {
   const [hideDoneTasks, setHideDoneTasks] = useState(false);
