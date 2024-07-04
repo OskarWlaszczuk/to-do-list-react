@@ -1,10 +1,11 @@
-import { Content, Item, SecondItem } from "./styled";
+import { Content, Item } from "./styled";
 
 const Stats = ({ tasks }) => (
     tasks.length > 0 && (
         <Content>
             <Item>Liczba wszystkich zadań: {tasks.length}</Item>
-            <SecondItem>Liczba ukończonych zadań: {tasks.filter(({ done }) => done).length}</SecondItem>
+            <Item $sumOfFinishedTasks>Liczba ukończonych zadań: {tasks.filter(({ done }) => done).length}</Item>
+            <Item $sumOfImportantTasks>Liczba ukończonych zadań: {tasks.filter(({ bold }) => bold).length}</Item>
         </Content>
 
     )
