@@ -32,8 +32,8 @@ export const ButtonsBarItem = styled.button`
     color: #44545a82;
 
     &:hover{
-    background-color: transparent;
-  };
+      background-color: transparent;
+    };
   };
 
   ${({ $italic }) => $italic && css`
