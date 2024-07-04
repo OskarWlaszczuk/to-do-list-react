@@ -11,5 +11,5 @@ export const useHideDoneTasks = (tasks) => {
     );
   };
 
-  return [hideDoneTasks, toggleHideDoneTasks];
+  return { hideDoneTasks, toggleHideDoneTasks };
 };
