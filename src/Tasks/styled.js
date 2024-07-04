@@ -1,96 +1,127 @@
 import styled, { css } from "styled-components";
 
 export const List = styled.ul`
-    padding: 0px;
+  padding: 0px;
+`;
+
+export const ButtonsBar = styled.div`
+  text-align:center;
+  grid-column: 1 / -1;
+  border-top: 1px solid black;
+  display:grid;
+  grid-template-columns:repeat(2,auto);
+  grid-gap: 15px;
+  padding: 5px;
+`;
+
+export const ButtonsBarItem = styled.button`
+justify-self:end;
+  font-weight: bold;
+  font-size:larger;
+  border:none;
+  background-color:transparent;
+  padding: 3px;
+  text-align: center;
+  border-radius: 5px;
+
+  &:hover{
+    background-color: #8080805e;
+  };
+
+  ${({ $italic }) => $italic && css`
+  font-style: italic;
+  font-weight: 300;
+  justify-self:start;
+  `}
 `;
 
 export const Item = styled.li`
-    border-bottom: 3px solid rgba(144, 141, 141, 0.742);
-    display: grid;
-    padding: 5px 0px;
-    grid-template-columns: 50px 1fr 50px;
-    transition:
-        background 0.3s,
-        padding 0.3s,
-        font-size 0.3s,
-    ;
+  display: grid;
+  padding: 5px 0px;
+  grid-template-rows: repeat(2, auto);
+  grid-template-columns: 50px 1fr 50px;
+  display: grid;
+  border-bottom: 3px solid rgba(144, 141, 141, 0.742);
+  transition: background 0.3s, padding 0.3s, font-size 0.3s;
 
-    @media (max-width:${({ theme }) => theme.breakPoints.mobileM}px) {
-        grid-template-columns: 40px 1fr 40px;
-    };
+  @media (max-width: ${({ theme }) => theme.breakPoints.mobileM}px) {
+    grid-template-columns: 40px 1fr 40px;
+  }
 `;
 
 export const Button = styled.button`
+  border: none;
+  color: white;
+  padding: 10px;
+  border-radius: 3px;
+  border: 3px solid #ab0929;
+  border-bottom: 10px solid #ab0929;
+  background-color: crimson;
+  align-self: center;
+  min-height: 50px;
+  font-size: small;
+
+  @media (max-width: ${({ theme }) => theme.breakPoints.mobileM}px) {
     border: none;
-    color: white;
-    padding: 10px;
-    border-radius: 3px;
+    border-top: none;
+    min-height: 40px;
+    font-size: x-small;
+  }
+
+  &:hover {
+    background-color: rgb(241, 40, 80);
+    transition: 0.2s;
+  }
+
+  &:active {
     border: 3px solid #ab0929;
-    border-bottom: 10px solid #ab0929;
-    background-color: crimson;
-    align-self: center;
-    min-height: 50px;
-    font-size: small;
+    border-top: 10px solid #ab0929;
 
-    @media (max-width:${({ theme }) => theme.breakPoints.mobileM}px) {
-        border: none;
-        border-top: none;
-        min-height: 40px;
-        font-size: x-small;
-    };
-
-    &:hover {
-        background-color: rgb(241, 40, 80);
-        transition: 0.2s;
-    };    
-
-    &:active{
-        border: 3px solid #ab0929;
-        border-top: 10px solid #ab0929;
-
-        @media (max-width:${({ theme }) => theme.breakPoints.mobileM}px) {
-            border: none;
-            border-top: none;
-        };
-    };
+    @media (max-width: ${({ theme }) => theme.breakPoints.mobileM}px) {
+      border: none;
+      border-top: none;
+    }
+  }
 `;
 
 export const ToggleDoneButton = styled(Button)`
-    background: green;
+  background: green;
+  border: 3px solid #0c660c;
+  border-bottom: 10px solid #0c660c;
+
+  @media (max-width: ${({ theme }) => theme.breakPoints.mobileM}px) {
+    border: none;
+    border-top: none;
+    min-height: 40px;
+    font-size: x-small;
+  }
+
+  &:hover {
+    background: rgb(6, 147, 6);
+    transition: 0.2s;
+  }
+
+  &:active {
     border: 3px solid #0c660c;
-    border-bottom: 10px solid #0c660c;
+    border-top: 10px solid #0c660c;
 
-    @media (max-width:${({theme}) => theme.breakPoints.mobileM}px) {
-        border: none;
-        border-top: none;
-        min-height: 40px;
-        font-size: x-small;
-    };
-
-    &:hover{
-        background: rgb(6, 147, 6);
-        transition: 0.2s;
-    };
-
-    &:active{
-        border: 3px solid #0c660c;
-        border-top: 10px solid #0c660c;
-
-        @media (max-width:${({ theme }) => theme.breakPoints.mobileM}px) {
-            border: none;
-            border-top: none;
-        };
-    };
+    @media (max-width: ${({ theme }) => theme.breakPoints.mobileM}px) {
+      border: none;
+      border-top: none;
+    }
+  }
 `;
 
 export const Content = styled.p`
-    text-align: center;
-    line-height: 1.5;
-    padding: 10px;
-    padding: 0px 5px;
+  text-align: center;
+  line-height: 1.5;
+  padding: 10px;
+  padding: 0px 5px;
 
-    ${({ $donedItem }) => $donedItem && css`
-        text-decoration: line-through;
-        color: rgba(0, 0, 0, 0.682);
+  ${({ $donedItem }) =>
+    $donedItem &&
+    css`
+      text-decoration: line-through;
+      color: rgba(0, 0, 0, 0.682);
     `};
 `;
