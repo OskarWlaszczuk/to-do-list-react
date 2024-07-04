@@ -12,6 +12,16 @@ export const useTasks = () => {
         localStorage.setItem('tasksListItems', JSON.stringify(tasks));
     }, [tasks]);
 
+
+    const toggleBoldContent = id => {
+        setTasks(tasks => tasks.map(task => (
+            task.id === id ?
+                { ...task, bold: !task.bold } :
+                task
+        )))
+    };
+
+
     const removeTasks = id => {
         setTasks(tasks => tasks.filter(task => task.id !== id));
     };
@@ -53,5 +63,6 @@ export const useTasks = () => {
         toggleTasksDone,
         toggleAllTaskDone,
         addNewTaskContent,
+        toggleBoldContent,
     };
 };

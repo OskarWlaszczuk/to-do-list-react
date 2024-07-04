@@ -5,14 +5,14 @@ export const Content = styled.section`
     grid-template-columns: repeat(2, 48%);
     justify-content: space-between;
     border-bottom: none;
-    margin-top: 15px;
+    border-bottom:2px solid rgba(179, 174, 174, 0.742);
+    padding: 15px 0;
 
     @media (max-width:${({ theme }) => theme.breakPoints.smallLaptop}px) {
         display: grid;
         grid-template-columns: 100%;
         grid-template-rows: repeat(2, 1fr);
         grid-gap: 5%;
-        border-bottom: none;
     };
 `;
 

@@ -7,7 +7,6 @@ export const List = styled.ul`
 export const ButtonsBar = styled.div`
   text-align:center;
   grid-column: 1 / -1;
-  border-top: 1px solid black;
   display:grid;
   grid-template-columns:repeat(2,auto);
   grid-gap: 15px;
@@ -15,7 +14,7 @@ export const ButtonsBar = styled.div`
 `;
 
 export const ButtonsBarItem = styled.button`
-justify-self:end;
+  justify-self:end;
   font-weight: bold;
   font-size:larger;
   border:none;
@@ -23,15 +22,24 @@ justify-self:end;
   padding: 3px;
   text-align: center;
   border-radius: 5px;
+  transition: 0.3s;
 
   &:hover{
     background-color: #8080805e;
+  };
+
+  &:disabled {
+    color: #44545a82;
   };
 
   ${({ $italic }) => $italic && css`
   font-style: italic;
   font-weight: 300;
   justify-self:start;
+  `}
+
+  ${({ $activated }) => $activated && css`
+    background-color: #8080805e;
   `}
 `;
 
@@ -123,5 +131,11 @@ export const Content = styled.p`
     css`
       text-decoration: line-through;
       color: rgba(0, 0, 0, 0.682);
+    `};
+
+    ${({ $bold }) =>
+    $bold &&
+    css`
+      font-weight: bold;
     `};
 `;
