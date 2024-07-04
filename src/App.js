@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import MainHeader from "./MainHeader";
 import Form from "./Form";
 import Section from "./Section";
@@ -7,10 +7,9 @@ import Buttons from "./Buttons";
 import Stats from "./Stats";
 import Tasks from "./Tasks";
 import { useTasks } from "./useTasks";
+import { useHideDoneTasks } from "./useHideDoneTasks";
 
 function App() {
-  const [hideDoneTasks, setHideDoneTasks] = useState(false);
-
   const {
     tasks,
     removeTasks,
@@ -19,13 +18,7 @@ function App() {
     addNewTaskContent,
   } = useTasks();
 
-  const toggleHideDoneTasks = () => {
-    setHideDoneTasks(hideDoneTasks => (
-      tasks.some(({ done }) => done) ?
-        hideDoneTasks = !hideDoneTasks :
-        hideDoneTasks
-    ));
-  };
+  const [hideDoneTasks, toggleHideDoneTasks] = useHideDoneTasks(tasks);
 
   return (
     <>
@@ -42,7 +35,8 @@ function App() {
                   hideDoneTasks={hideDoneTasks}
                   toggleHideDoneTasks={toggleHideDoneTasks}
                   toggleAllTaskDone={toggleAllTaskDone}
-                />}
+                />
+              }
             />
             <Stats tasks={tasks} />
             <Tasks
@@ -51,10 +45,11 @@ function App() {
               removeTasks={removeTasks}
               toggleTasksDone={toggleTasksDone}
             />
-          </React.Fragment>}
+          </React.Fragment>
+        }
       />
     </>
   );
-};
+}
 
 export default App;
