@@ -16,9 +16,10 @@ function App() {
     toggleTasksDone,
     toggleAllTaskDone,
     addNewTaskContent,
+    toggleBoldContent,
   } = useTasks();
 
-  const [hideDoneTasks, toggleHideDoneTasks] = useHideDoneTasks(tasks);
+  const {hideDoneTasks, toggleHideDoneTasks} = useHideDoneTasks(tasks);
 
   return (
     <>
@@ -44,6 +45,7 @@ function App() {
               hideDoneTasks={hideDoneTasks}
               removeTasks={removeTasks}
               toggleTasksDone={toggleTasksDone}
+              toggleBoldContent={toggleBoldContent}
             />
           </React.Fragment>
         }
