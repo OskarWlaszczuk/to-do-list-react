@@ -40,7 +40,6 @@ export const Item = styled.p`
         @media (min-width:${({ theme }) => theme.breakPoints.smallLaptop}px) {
            grid-column: 1/ -1;
            justify-self: center;
-           align-self: center;
         };
     `};
 `;

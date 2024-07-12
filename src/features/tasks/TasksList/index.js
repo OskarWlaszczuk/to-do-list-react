@@ -1,32 +1,32 @@
 import { List, Item, Button, ToggleDoneButton, Content, ButtonsBar, ButtonsBarItem } from "./styled";
 
-const Tasks = ({ tasks, hideDoneTasks, removeTasks, toggleTasksDone, toggleBoldContent }) => {
+const TasksList = ({ tasks, hideDoneTasks, removeTasks, toggleTasksDone, toggleImportantContent }) => {
 
   return (
     <List>
-      {tasks.map(({ id, done, content, bold }) => {
+      {tasks.map(({ id, done, content, important }) => {
         return (
           (!hideDoneTasks || (hideDoneTasks && !done)) && (
             <Item key={id}>
               <ButtonsBar>
                 <ButtonsBarItem
+                  title="Ustaw, jako ważne"
                   disabled={done}
-                  $activated={bold}
-                  onClick={() => toggleBoldContent(id)}
+                  $activated={important}
+                  onClick={() => toggleImportantContent(id)}
                 >
                   B
                 </ButtonsBarItem>
-                <ButtonsBarItem $italic>I</ButtonsBarItem>
               </ButtonsBar>
               <ToggleDoneButton onClick={() => {
                 toggleTasksDone(id);
-                if (bold) {
-                  toggleBoldContent(id)
+                if (important) {
+                  toggleImportantContent(id)
                 };
               }}>
                 {done ? "✔" : ""}
               </ToggleDoneButton>
-              <Content $bold={bold} $donedItem={done}>{content}</Content>
+              <Content $important={important} $donedItem={done}>{content}</Content>
               <Button onClick={() => removeTasks(id)}>🗑️</Button>
             </Item>
           )
@@ -36,4 +36,4 @@ const Tasks = ({ tasks, hideDoneTasks, removeTasks, toggleTasksDone, toggleBoldC
   );
 };
 
-export default Tasks;
+export default TasksList;

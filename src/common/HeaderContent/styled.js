@@ -18,7 +18,7 @@ export const Container = styled.div`
 
 export const Header = styled.header`
     font-weight: bold;
-    font-size: 25px;
+    font-size: 20px;
 
     @media (max-width:${({ theme }) => theme.breakPoints.mobileL}px) {
         justify-self: center;

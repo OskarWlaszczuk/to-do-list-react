@@ -1,7 +1,9 @@
+import { Header } from "../HeaderContent/styled";
+
 const MainHeader = () => (
-    <header>
+    <Header>
         <h1>Lista zadań</h1>
-    </header>
+    </Header>
 );
 
 export default MainHeader;
