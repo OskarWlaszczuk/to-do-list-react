@@ -1,8 +1,8 @@
 import { Content } from "./styled";
 
-const Section = ({ children }) => (
+const Section = ({body}) => (
     <Content>
-        {children}
+       {body}
     </Content>
 );
 
