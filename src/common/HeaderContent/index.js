@@ -1,11 +1,12 @@
+import Buttons from "../../features/tasks/Buttons";
 import { Container, Header } from "./styled";
 
-const HeaderContent = ({ children }) => (
+const HeaderContent = () => (
     <Container>
-        <Header className="headerContent__header">
-            Lista Zadań
+        <Header>
+            Lista zadań
         </Header>
-        {children}
+        <Buttons />
     </Container>
 );
 
