@@ -1,24 +1,32 @@
 import { useRef, useState } from "react";
+import { useDispatch } from "react-redux";
+import { addTask } from "../tasksSlice";
+import { nanoid } from "@reduxjs/toolkit";
 import { TaskForm, Header, Container, Input, Button } from "./styled";
 
-const Form = ({ addNewTaskContent }) => {
+const Form = () => {
     const [newTaskContent, setNewTaskContent] = useState("Zagrać w Wiedźmina");
     const inputRef = useRef(null);
 
+    const dispatch = useDispatch();
     const focusOnInput = () => inputRef.current.focus();
 
     const onFormSubmit = event => {
         event.preventDefault();
         focusOnInput();
         setNewTaskContent("");
-        newTaskContent && (
-            addNewTaskContent(newTaskContent)
+
+        const newTaskContentTrimmed = newTaskContent.trim();
+        newTaskContentTrimmed && (
+            dispatch(addTask({
+                content: newTaskContentTrimmed,
+                done: false,
+                id: nanoid(),
+            }))
         );
     };
 
-    const onInputChange = ({ target }) => {
-        setNewTaskContent(newTaskContent => newTaskContent = target.value);
-    };
+    const onInputChange = ({ target }) => setNewTaskContent(newTaskContent => newTaskContent = target.value);
 
     return (
         <TaskForm onSubmit={onFormSubmit}>
