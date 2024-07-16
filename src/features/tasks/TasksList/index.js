@@ -1,6 +1,11 @@
+import { useSelector, useDispatch } from "react-redux";
+import { selectTasks } from "../tasksSlice";
+import { toggleTaskDone, removeTask, toggleImportantContent } from "../tasksSlice";
 import { List, Item, Button, ToggleDoneButton, Content, ButtonsBar, ButtonsBarItem } from "./styled";
 
-const TasksList = ({ tasks, hideDoneTasks, removeTasks, toggleTasksDone, toggleImportantContent }) => {
+const TasksList = () => {
+  const { tasks, hideDoneTasks } = useSelector(selectTasks);
+  const dispatch = useDispatch();
 
   return (
     <List>
@@ -12,22 +17,24 @@ const TasksList = ({ tasks, hideDoneTasks, removeTasks, toggleTasksDone, toggleI
                 <ButtonsBarItem
                   title="Ustaw, jako ważne"
                   disabled={done}
-                  $activated={important}
-                  onClick={() => toggleImportantContent(id)}
+                  $activated={important && !done}
+                  onClick={() => dispatch(toggleImportantContent(id))}
                 >
                   B
                 </ButtonsBarItem>
               </ButtonsBar>
-              <ToggleDoneButton onClick={() => {
-                toggleTasksDone(id);
-                if (important) {
-                  toggleImportantContent(id)
-                };
-              }}>
+              <ToggleDoneButton onClick={
+                () => dispatch(toggleTaskDone(id))
+              }
+              >
                 {done ? "✔" : ""}
               </ToggleDoneButton>
-              <Content $important={important} $donedItem={done}>{content}</Content>
-              <Button onClick={() => removeTasks(id)}>🗑️</Button>
+              <Content $important={important && !done} $donedItem={done}>{content}</Content>
+              <Button
+                onClick={() => dispatch(removeTask(id))}
+              >
+                🗑️
+              </Button>
             </Item>
           )
         );
