@@ -1,9 +1,9 @@
 import { useSelector } from "react-redux";
 import { Content, Item } from "./styled";
-import { selectTasks } from "../tasksSlice";
+import { selectTasksState } from "../tasksSlice";
 
 const Stats = () => {
-    const { tasks } = useSelector(selectTasks)
+    const { tasks } = useSelector(selectTasksState)
 
     return (tasks.length > 0 && (
         <Content>
