@@ -2,9 +2,9 @@ import { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { addTask } from "../tasksSlice";
 import { nanoid } from "@reduxjs/toolkit";
-import { TaskForm, Header, Container, Input, Button } from "./styled";
+import { Header, Container, Input, Button } from "./styled";
 
-const Form = () => {
+const Form = ({title}) => {
     const [newTaskContent, setNewTaskContent] = useState("Zagrać w Wiedźmina");
     const inputRef = useRef(null);
 
@@ -29,9 +29,9 @@ const Form = () => {
     const onInputChange = ({ target }) => setNewTaskContent(newTaskContent => newTaskContent = target.value);
 
     return (
-        <TaskForm onSubmit={onFormSubmit}>
+        <form onSubmit={onFormSubmit}>
             <Header>
-                Dodaj nowe zadanie
+             {title}
             </Header>
             <Container>
                 <Input
@@ -46,7 +46,7 @@ const Form = () => {
                 />
                 <Button type="submit">Dodaj zadanie</Button>
             </Container>
-        </TaskForm >
+        </form >
     );
 };
 export default Form;
