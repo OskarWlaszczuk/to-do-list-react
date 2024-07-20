@@ -1,5 +1,5 @@
 import React from "react";
-import MainHeader from "../../common/MainHeader";
+import Title from "../../common/Title";
 import Form from "./Form";
 import Section from "../../common/Section";
 import HeaderContent from "../../common/HeaderContent";
@@ -9,12 +9,14 @@ import TasksList from "./TasksList"
 export function Tasks() {
   return (
     <>
-      <MainHeader />
-      <Form />
+      <Title />
+      <Section body={
+        <Form title="Dodaj nowe zadanie" />
+      } />
       <Section body={
         <>
           <HeaderContent title="Lista zadań" />
-          <Stats />
+          <Stats title="Dane zadań 📊" />
           <TasksList />
         </>
       } />
