@@ -122,8 +122,7 @@ export const ToggleDoneButton = styled(Button)`
 export const Content = styled.p`
   text-align: center;
   line-height: 1.5;
-  padding: 10px;
-  padding: 0px 5px;
+  padding:  0px 20px;
 
   ${({ $donedItem }) =>
     $donedItem &&
@@ -136,5 +135,11 @@ export const Content = styled.p`
     $important &&
     css`
       font-weight: bold;
+    `};
+
+    ${({ $justified }) =>
+    $justified &&
+    css`
+      text-align: justify;
     `};
 `;
