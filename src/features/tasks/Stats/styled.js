@@ -1,45 +1,23 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const Content = styled.section`
-    display: grid;
-    grid-template-columns: repeat(2, 48%);
-    grid-template-rows: repeat(2, auto);
-    justify-content: space-between;
-    border-bottom: none;
-    border-bottom:2px solid rgba(179, 174, 174, 0.742);
-    padding: 15px 0;
-
-    @media (max-width:${({ theme }) => theme.breakPoints.smallLaptop}px) {
-        display: grid;
-        grid-template-columns: 100%;
-        grid-template-rows: repeat(3, 1fr);
+    @media (max-width:${({ theme }) => theme.breakPoints.mobileL}px) {
+        margin: auto;
+        width: min-content;
     };
 `;
 
+export const ItemWrapper = styled.section`
+    border-left: 2px solid black;
+`;
+
 export const Item = styled.p`
-    color: white;
-    background-color: #488b2f;
-    box-shadow: 0px 0px 11px -3px #525251be;
-    text-align: center;
-    text-decoration: underline;
-    text-wrap: nowrap;
-    margin: 5px 0;
-    padding: 10px;
+   padding-left: 20px;
+   margin: 10px 0;
+   text-wrap: nowrap;
 
     @media (max-width: ${({ theme }) => theme.breakPoints.mobileL}px){ 
+        padding-left: 10px;
         font-size: smaller;
     };
-
-    ${({ $sumOfFinishedTasks }) => $sumOfFinishedTasks && css`
-        background-color: #46397a;
-    `};
-
-    ${({ $sumOfImportantTasks }) => $sumOfImportantTasks && css`
-        background-color: indianred;
-        
-        @media (min-width:${({ theme }) => theme.breakPoints.smallLaptop}px) {
-           grid-column: 1/ -1;
-           justify-self: center;
-        };
-    `};
 `;
