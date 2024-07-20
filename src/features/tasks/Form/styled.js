@@ -1,23 +1,7 @@
 import styled from "styled-components";
 
-export const TaskForm = styled.form`
-    background-color: white;
-    border: 2px solid rgba(179, 174, 174, 0.742);
-    border-radius: 3px;
-    box-shadow: 0px 0px 11px -3px #525251be;
-    width: 60%;
-
-    @media (max-width:${({ theme }) => theme.breakPoints.tabletHorizontal}px) {
-        width: 80%;
-    };
-
-    @media (max-width:${({ theme }) => theme.breakPoints.mobileL}px) {
-        width: 100%;
-    };
-`;
-
 export const Header = styled.header`
-    padding: 10px;
+    padding-bottom: 10px;
     font-weight: bold;
     font-size: larger;
     border-bottom: 2px solid rgba(179, 174, 174, 0.742);
@@ -27,7 +11,7 @@ export const Container = styled.div`
     display: grid;
     grid-template-columns: 1fr 30%;
     grid-gap: 15px;
-    padding: 10px;
+    padding-top: 15px;
 
     @media (max-width:${({ theme }) => theme.breakPoints.tabletHorizontal}px) {
         grid-template-columns: 100%;
