@@ -1,4 +1,4 @@
-import Buttons from "../../features/tasks/Buttons";
+import Buttons from "../../features/tasks/TasksPage/Buttons";
 import { Container, Header } from "./styled";
 
 const HeaderContent = () => (
