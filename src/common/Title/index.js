@@ -1,5 +1,5 @@
-const Title = () => (
-    <h1>Lista zadań</h1>
+const Title = ({title}) => (
+    <h1>{title}</h1>
 );
 
 export default Title;
