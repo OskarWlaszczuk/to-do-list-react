@@ -60,6 +60,7 @@ export const selectTasks = state => selectTasksState(state).tasks;
 export const selectHideDoneTasks = state => selectTasksState(state).hideDoneTasks;
 export const selectIsAllTasksDone = state => selectTasks(state).every(({ done }) => done);
 export const selectIsTasksEmpty = state => selectTasks(state).length === 0;
+export const selectTasksLength = state => selectTasks(state).length;
 export const selectTaskById = (state, taskId) => selectTasks(state).find(({ id }) => id === taskId);
 export const selectTaskByQuery = (state, query) => {
     const tasks = selectTasks(state);
@@ -69,5 +70,7 @@ export const selectTaskByQuery = (state, query) => {
 
     return tasks.filter(({ content }) => content.toUpperCase().includes(query.toUpperCase().trim()));
 };
+export const selectIsSearchTasksEmpty = (state, query) => selectTaskByQuery(state, query).length === 0;
+
 
 export const tasksReducer = tasksSlice.reducer;
