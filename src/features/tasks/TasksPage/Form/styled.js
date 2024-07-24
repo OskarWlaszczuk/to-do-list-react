@@ -20,13 +20,7 @@ export const Container = styled.div`
     };
 `;
 
-export const Input = styled.input`
-    padding: 10px;
-    border: 2px solid rgba(179, 174, 174, 0.742);
-    border-radius: 5px;
-`;
-
-export const Button = styled.button`
+export const SubmitButton = styled.button`
     text-wrap: nowrap;
     color: white;
     background-color: ${({ theme }) => theme.mainColor.color};
