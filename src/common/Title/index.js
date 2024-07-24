@@ -1,5 +1,7 @@
-const Title = ({title}) => (
-    <h1>{title}</h1>
-);
+import { Header } from "../Header";
 
-export default Title;
+export const Title = ({ content }) => (
+    <Header>
+        <h1>{content}</h1>
+    </Header>
+);
