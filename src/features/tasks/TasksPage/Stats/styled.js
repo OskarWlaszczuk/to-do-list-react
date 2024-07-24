@@ -18,6 +18,5 @@ export const Item = styled.p`
 
     @media (max-width: ${({ theme }) => theme.breakPoints.mobileL}px){ 
         padding-left: 10px;
-        font-size: smaller;
     };
 `;
