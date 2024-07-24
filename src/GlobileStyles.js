@@ -16,6 +16,6 @@ export const GlobalStyles = createGlobalStyle`
         flex-direction: column;
         align-items: center;
         min-height: 100vh;
-        padding: 10px;
+        padding: 0 10px 10px;
     };
 `;
