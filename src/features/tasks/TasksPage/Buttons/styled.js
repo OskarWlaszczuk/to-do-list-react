@@ -14,6 +14,7 @@ export const Section = styled.section`
 `;
 
 export const Button = styled.button`
+    justify-self: end;
     color: ${({theme}) => theme.mainColor.color};
     background-color: transparent;
     border: none;
@@ -21,6 +22,10 @@ export const Button = styled.button`
     padding: 0px;
     text-wrap: nowrap;
     
+    @media (max-width: ${({ theme }) => theme.breakPoints.smallLaptop}px) {
+        justify-self: center;
+    };
+
     &:hover {
         color: rgb(8, 187, 187);
     };
