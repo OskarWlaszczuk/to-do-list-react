@@ -4,7 +4,6 @@ export const Container = styled.div`
     display: grid;
     grid-gap: 10px;
     align-items: baseline;
-    padding: 15px 0px;
     grid-template-columns: repeat(2, 1fr);
     border-bottom: 2px solid rgba(179, 174, 174, 0.742);
     padding-top: 0px;
