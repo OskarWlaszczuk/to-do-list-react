@@ -1,32 +1,35 @@
-import { useHistory, useLocation } from "react-router-dom/cjs/react-router-dom.min"
-import { Header } from "../../../common/HeaderContent/styled"
-import { Input } from "../TasksPage/Form/styled"
 import { queryKey } from "../queryKey"
+import { useQueryParameter } from "../useQueryParameter"
+import { useReplaceQueryParameter } from "../useReplaceQueryParameter"
+import { Img, Wrapper } from "./styled"
+import { Input } from "../../../common/Input"
+import { selectIsTasksEmpty } from "../tasksSlice"
+import { useSelector } from "react-redux"
 
-export const Search = ({ title }) => {
-    const history = useHistory();
-    const location = useLocation();
-
-    const query = (new URLSearchParams(location.search)).get(queryKey);
+export const Search = () => {
+    const isTasksEmpty = useSelector(selectIsTasksEmpty);
+    const query = useQueryParameter(queryKey);
+    const replaceQueryParameter = useReplaceQueryParameter();
 
     const onInputChange = ({ target }) => {
-        const inputValueTrimmed = target.value.trim();
-        const searchParams = new URLSearchParams(location.search);
-
-        !inputValueTrimmed ?
-            searchParams.delete(queryKey) :
-            searchParams.set(queryKey, inputValueTrimmed);
-
-        history.push(`${location.pathname}?${searchParams.toString()}`);
+        replaceQueryParameter({
+            key: queryKey,
+            value: target.value,
+        });
     };
 
     return (
-        <>
-            <Header>{title}</Header>
-            <Input
-                onChange={onInputChange}
-                value={query || ""}
-            />
-        </>
-    )
-}
+        !isTasksEmpty && (
+            <Wrapper>
+                <Img src="https://cdn-icons-png.flaticon.com/128/3839/3839020.png" alt="img" />
+                <Input
+                    $search
+                    name="searchTaskField"
+                    onChange={onInputChange}
+                    value={query || ""}
+                    placeholder="Szukaj zadania"
+                />
+            </Wrapper>
+        )
+    );
+};
