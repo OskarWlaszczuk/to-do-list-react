@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import styled, { css } from "styled-components";
 
 export const List = styled.ul`
@@ -11,7 +12,6 @@ export const ButtonsBar = styled.div`
   display: grid;
   grid-template-columns: auto;
   grid-gap: 5px;
-  padding: 5px;
 `;
 
 export const ButtonsBarItem = styled.button`
@@ -19,7 +19,6 @@ export const ButtonsBarItem = styled.button`
   font-size:larger;
   border:none;
   background-color:transparent;
-  padding: 3px;
   text-align: center;
   border-radius: 5px;
   transition: 0.3s;
@@ -44,16 +43,15 @@ export const ButtonsBarItem = styled.button`
 
 export const Item = styled.li`
   display: grid;
-  padding: 5px 0px;
   grid-template-rows: repeat(2, auto);
-  grid-template-columns: 50px 1fr 50px;
-  display: grid;
+  grid-template-columns: 45px 1fr 45px;
+  margin-bottom: 10px;
   border-bottom: 3px solid rgba(144, 141, 141, 0.742);
   transition: background 0.3s, padding 0.3s, font-size 0.3s;
 
   @media (max-width: ${({ theme }) => theme.breakPoints.mobileM}px) {
     grid-template-columns: 40px 1fr 40px;
-  }
+  };
 `;
 
 export const Button = styled.button`
@@ -61,68 +59,45 @@ export const Button = styled.button`
   color: white;
   padding: 10px;
   border-radius: 3px;
-  border: 3px solid #ab0929;
-  border-bottom: 10px solid #ab0929;
   background-color: crimson;
   align-self: center;
-  min-height: 50px;
+  min-height: 45px;
   font-size: small;
 
   @media (max-width: ${({ theme }) => theme.breakPoints.mobileM}px) {
-    border: none;
-    border-top: none;
     min-height: 40px;
     font-size: x-small;
-  }
+  };
 
   &:hover {
     background-color: rgb(241, 40, 80);
-    transition: 0.2s;
-  }
-
-  &:active {
-    border: 3px solid #ab0929;
-    border-top: 10px solid #ab0929;
-
-    @media (max-width: ${({ theme }) => theme.breakPoints.mobileM}px) {
-      border: none;
-      border-top: none;
-    }
-  }
+  };
 `;
 
 export const ToggleDoneButton = styled(Button)`
   background: green;
-  border: 3px solid #0c660c;
-  border-bottom: 10px solid #0c660c;
+  border: none;
 
   @media (max-width: ${({ theme }) => theme.breakPoints.mobileM}px) {
-    border: none;
-    border-top: none;
     min-height: 40px;
     font-size: x-small;
-  }
+  };
 
   &:hover {
     background: rgb(6, 147, 6);
-    transition: 0.2s;
-  }
-
-  &:active {
-    border: 3px solid #0c660c;
-    border-top: 10px solid #0c660c;
-
-    @media (max-width: ${({ theme }) => theme.breakPoints.mobileM}px) {
-      border: none;
-      border-top: none;
-    }
-  }
+  };
 `;
 
 export const Content = styled.p`
   text-align: center;
-  line-height: 1.5;
-  padding:  0px 20px;
+  transition:0.5s;
+  padding: 10px;
+  margin: 16px 22px;
+  border-radius: 7px;
+
+  &:hover {
+    background-color: #80808029;
+  };
 
   ${({ $donedItem }) =>
     $donedItem &&
@@ -142,4 +117,12 @@ export const Content = styled.p`
     css`
       text-align: justify;
     `};
+`;
+
+export const StyledLink = styled(Link)`
+  color: black;
+  text-decoration: none;
+  transition: 0.5s;
+  padding:  0px 10px;
+  line-height: 1.5;
 `;
