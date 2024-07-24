@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 export const Content = styled.p`
     text-align: center;
 
-    ${({ $notFount }) => $notFount && css`
+    ${({  $notFound }) => $notFound && css`
         font-size: larger;
         font-weight: bold;
         color: crimson;
