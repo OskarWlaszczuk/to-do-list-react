@@ -1,6 +1,16 @@
 import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
 
+interface ButtonsBarItemProps {
+  $activated?: boolean;
+}
+
+interface ContentProps {
+  $donedItem?: boolean;
+  $important?: boolean;
+  $justified?: boolean;
+}
+
 export const List = styled.ul`
   padding: 0px;
 `;
@@ -14,7 +24,7 @@ export const ButtonsBar = styled.div`
   grid-gap: 5px;
 `;
 
-export const ButtonsBarItem = styled.button`
+export const ButtonsBarItem = styled.button<ButtonsBarItemProps>`
   font-weight: bold;
   font-size:larger;
   border:none;
@@ -88,7 +98,7 @@ export const ToggleDoneButton = styled(Button)`
   };
 `;
 
-export const Content = styled.p`
+export const Content = styled.p<ContentProps>`
   text-align: center;
   transition:0.5s;
   padding: 10px;
