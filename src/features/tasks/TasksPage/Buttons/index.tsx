@@ -4,11 +4,10 @@ import { selectTasks, selectHideDoneTasks, selectIsAllTasksDone, selectIsTasksEm
 import { Section, Button } from "./styled";
 import { queryKey } from "../../queryKey";
 import { useQueryParameter } from "../../useQueryParameter";
-import { TaskData } from "../../../../common/TaskData";
 import { RootState } from "../../store";
 
 const Buttons = () => {
-    const tasks: TaskData[] = useSelector(selectTasks)
+    const tasks = useSelector(selectTasks)
     const hideDoneTasks = useSelector(selectHideDoneTasks);
     const isAllDone = useSelector(selectIsAllTasksDone);
     const isTasksEmpty = useSelector(selectIsTasksEmpty);
