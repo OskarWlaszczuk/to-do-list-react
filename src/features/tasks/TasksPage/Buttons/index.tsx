@@ -1,6 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
-import { toggleHideDoneTasks, toggleAllTaskDone, selectIsSearchTasksEmpty } from "../../tasksSlice";
-import { selectTasks, selectHideDoneTasks, selectIsAllTasksDone, selectIsTasksEmpty } from "../../tasksSlice";
+import {
+    toggleHideDoneTasks,
+    toggleAllTaskDone,
+    selectIsSearchTasksEmpty,
+    selectTasks,
+    selectHideDoneTasks,
+    selectIsAllTasksDone,
+    selectIsTasksEmpty
+} from "../../tasksSlice";
 import { Section, Button } from "./styled";
 import { queryKey } from "../../queryKey";
 import { useQueryParameter } from "../../useQueryParameter";
@@ -13,14 +20,14 @@ const Buttons = () => {
     const isTasksEmpty = useSelector(selectIsTasksEmpty);
     const query = useQueryParameter(queryKey);
 
-    const isSearchTasksEmpty = useSelector((state:RootState) => selectIsSearchTasksEmpty(state, query!));
+    const isSearchTasksEmpty = useSelector((state: RootState) => selectIsSearchTasksEmpty(state, query!));
     const dispatch = useDispatch();
 
     return (
         <Section>
             {!isTasksEmpty && (
                 <>
-                <Button
+                    <Button
                         disabled={isSearchTasksEmpty}
                         onClick={() => dispatch(toggleHideDoneTasks())}>
                         {
