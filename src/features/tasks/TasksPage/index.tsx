@@ -23,7 +23,7 @@ export function TasksPage() {
         body={
           <>
             <HeaderContent title={titleOfTasksContent} sideContent={<Buttons />} />
-            <Stats title="Dane zadań 📊" />
+            <Stats />
             <Search />
             <TasksList />
           </>
