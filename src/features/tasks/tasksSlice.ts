@@ -12,7 +12,7 @@ interface TasksState {
 type TaskId = TaskData["id"];
 type TaskIdPayload = PayloadAction<TaskId>;
 
-type QueryValue = TaskData["content"];
+type QueryValue = TaskData["content"] | null;
 
 const initialState: TasksState = {
     tasks: getInitialTasks(tasksListKey),
