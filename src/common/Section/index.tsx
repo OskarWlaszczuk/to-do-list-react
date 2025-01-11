@@ -9,7 +9,7 @@ interface SectionProps {
 
 const Section = ({ body, title }: SectionProps) => (
     <Wrapper >
-        <Header>{title}</Header>
+        {title && <Header>{title}</Header>}
         <article>{body}</article>
     </Wrapper>
 );
