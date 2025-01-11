@@ -2,13 +2,17 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { getInitialTasks } from './tasksLocaleStorage';
 import { tasksListKey } from '../../tasksListKey';
 import { TaskData } from '../../common/TaskData';
+import { RootState } from './store';
 
 interface TasksState {
     tasks: ReturnType<typeof getInitialTasks>;
     hideDoneTasks: boolean;
 }
 
-type TaskIdPayload = PayloadAction<TaskData["id"]>;
+type TaskId = TaskData["id"];
+type TaskIdPayload = PayloadAction<TaskId>;
+
+type QueryValue = TaskData["content"];
 
 const initialState: TasksState = {
     tasks: getInitialTasks(tasksListKey),
@@ -64,15 +68,15 @@ export const {
     setTasks,
 } = tasksSlice.actions;
 
-const selectTasksState = (state) => state.tasks;
+const selectTasksState = (state: RootState) => state.tasks;
 
-export const selectTasks = state => selectTasksState(state).tasks;
-export const selectHideDoneTasks = state => selectTasksState(state).hideDoneTasks;
-export const selectIsAllTasksDone = state => selectTasks(state).every(({ done }) => done);
-export const selectIsTasksEmpty = state => selectTasks(state).length === 0;
-export const selectTasksLength = state => selectTasks(state).length;
-export const selectTaskById = (state, taskId) => selectTasks(state).find(({ id }) => id === taskId);
-export const selectTaskByQuery = (state, query) => {
+export const selectTasks = (state: RootState) => selectTasksState(state).tasks;
+export const selectHideDoneTasks = (state: RootState) => selectTasksState(state).hideDoneTasks;
+export const selectIsAllTasksDone = (state: RootState) => selectTasks(state).every(({ done }) => done);
+export const selectIsTasksEmpty = (state: RootState) => selectTasks(state).length === 0;
+export const selectTasksLength = (state: RootState) => selectTasks(state).length;
+export const selectTaskById = (state: RootState, taskId: TaskId) => selectTasks(state).find(({ id }) => id === taskId);
+export const selectTaskByQuery = (state: RootState, query: QueryValue) => {
     const tasks = selectTasks(state);
     if (!query || query.trim() === "") {
         return tasks;
@@ -80,7 +84,7 @@ export const selectTaskByQuery = (state, query) => {
 
     return tasks.filter(({ content }) => content.toUpperCase().includes(query.toUpperCase().trim()));
 };
-export const selectIsSearchTasksEmpty = (state, query) => selectTaskByQuery(state, query).length === 0;
+export const selectIsSearchTasksEmpty = (state: RootState, query: QueryValue) => selectTaskByQuery(state, query).length === 0;
 
 
 export const tasksReducer = tasksSlice.reducer;
