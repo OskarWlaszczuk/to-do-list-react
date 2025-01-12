@@ -25,7 +25,7 @@ export const Search = () => {
                     <Wrapper>
                         <Img src="https://cdn-icons-png.flaticon.com/512/1167/1167092.png" alt="img" />
                         <Input
-                            $filterInput
+                            $searchInput
                             name="searchTaskField"
                             onChange={onInputChange}
                             value={query || ""}
