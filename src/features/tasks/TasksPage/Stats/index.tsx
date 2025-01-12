@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { Content, ItemWrapper, Item } from "./styled";
-import { Header } from "../../../../common/HeaderContent/styled"
 import { selectTasks, selectIsTasksEmpty, selectTasksLength } from "../../tasksSlice";
+import { SectionHeader } from "../../../../common/SectionHeader";
 
 const Stats = () => {
     const tasks = useSelector(selectTasks)
@@ -13,7 +13,7 @@ const Stats = () => {
             {
                 !isTasksEmpty && (
                     <Content>
-                        <Header $stats>Dane zadań 📊</Header>
+                        <SectionHeader $spaceAround>Dane zadań 📊</SectionHeader>
                         <ItemWrapper>
                             <Item>Liczba wszystkich zadań: <strong>{tasksLenght}</strong></Item>
                             <Item >

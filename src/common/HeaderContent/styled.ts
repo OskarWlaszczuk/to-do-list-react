@@ -1,8 +1,4 @@
-import styled, { css } from "styled-components";
-
-interface HeaderProps {
-    $stats?: boolean;
-}
+import styled from "styled-components";
 
 export const Container = styled.div`
     display: grid;
@@ -17,20 +13,4 @@ export const Container = styled.div`
         grid-template-columns: 1fr;
         grid-template-rows: repeat(2, auto);
     };
-`;
-
-export const Header = styled.header<HeaderProps>`
-    font-weight: bold;
-    font-size: 20px;
-
-
-    @media (max-width:${({ theme }) => theme.breakPoints.mobileL}px) {
-        justify-self: center;
-        text-align: center;
-    };
-
-    ${({ $stats }) => $stats && css`
-        margin-top: 20px;
-        margin-bottom: 20px;
-    `};
 `;

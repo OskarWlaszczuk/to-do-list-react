@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
-import { Container, Header } from "./styled";
+import { Container } from "./styled";
+import { SectionHeader } from "../SectionHeader";
 
 interface HeaderContentProps {
     title: string;
@@ -8,9 +9,7 @@ interface HeaderContentProps {
 
 export const HeaderContent = ({ title, sideContent }: HeaderContentProps) => (
     <Container>
-        <Header>
-            {title}
-        </Header>
+        <SectionHeader>{title}</SectionHeader>
         {sideContent}
     </Container>
 );
