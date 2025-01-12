@@ -1,5 +1,9 @@
 import styled, { css } from "styled-components";
 
+interface HeaderProps {
+    $stats?: boolean;
+}
+
 export const Container = styled.div`
     display: grid;
     grid-gap: 10px;
@@ -15,7 +19,7 @@ export const Container = styled.div`
     };
 `;
 
-export const Header = styled.header`
+export const Header = styled.header<HeaderProps>`
     font-weight: bold;
     font-size: 20px;
 
