@@ -1,11 +1,9 @@
-import { Header } from "../Header";
+import { StyledPageTitle } from "./styled";
 
 interface PageTitleProps {
     content: string;
 }
 
 export const PageTitle = ({ content }: PageTitleProps) => (
-    <Header>
-        <h1>{content}</h1>
-    </Header>
+    <StyledPageTitle>{content}</StyledPageTitle>
 );
