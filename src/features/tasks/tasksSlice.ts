@@ -51,7 +51,7 @@ export const tasksSlice = createSlice({
             });
         },
         downloadExampleTasks: () => { },
-        setTasks: (state, { payload: tasks }) => {
+        setTasks: (state, { payload: tasks }: PayloadAction<TaskData[]>) => {
             state.tasks = tasks;
         },
     },
