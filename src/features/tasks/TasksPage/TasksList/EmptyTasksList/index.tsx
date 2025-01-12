@@ -1,5 +1,5 @@
-import { Content } from "../../../../../common/Content"
+import { CenteredParagraph } from "../../../../../common/CenteredParagraph"
 
 export const EmptyTasksList = () => (
-    <Content>Lista zadań jest pusta</Content>
+    <CenteredParagraph>Lista zadań jest pusta</CenteredParagraph>
 );

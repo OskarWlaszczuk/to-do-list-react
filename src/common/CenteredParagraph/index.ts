@@ -4,7 +4,7 @@ interface ContentProps {
     $notFound?: boolean;
 }
 
-export const Content = styled.p<ContentProps>`
+export const CenteredParagraph = styled.p<ContentProps>`
     text-align: center;
 
     ${({ $notFound }) => $notFound && css`
