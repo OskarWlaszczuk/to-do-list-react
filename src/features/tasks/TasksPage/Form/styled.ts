@@ -21,7 +21,6 @@ export const Container = styled.div`
 `;
 
 export const SubmitButton = styled.button`
-    text-wrap: nowrap;
     color: white;
     background-color: ${({ theme }) => theme.mainColor.color};
     padding: 10px;

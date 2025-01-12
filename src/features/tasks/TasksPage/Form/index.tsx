@@ -1,24 +1,27 @@
-import { useRef, useState } from "react";
+import { FormEventHandler, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { addTask } from "../../tasksSlice";
 import { nanoid } from "@reduxjs/toolkit";
 import { Container, SubmitButton } from "./styled";
-import HeaderContent from "../../../../common/HeaderContent";
+import { HeaderContent } from "../../../../common/HeaderContent";
 import { Input } from "../../../../common/Input";
 import { Button } from "../Buttons/styled";
 import { downloadExampleTasks } from "../../tasksSlice";
+import { TaskData } from "../../../../common/TaskData";
 
 const Form = () => {
     const loadingButtonStatusText = "loading";
     const initialButtonStatusText = "initial";
 
     const [buttonStatus, setButtonStatus] = useState(initialButtonStatusText);
-    const [newTaskContent, setNewTaskContent] = useState("Zagrać w Wiedźmina");
-    const inputRef = useRef(null);
+    const [newTaskContent, setNewTaskContent] = useState<TaskData["content"]>("Zagrać w Wiedźmina");
+
+    const inputRef = useRef<HTMLInputElement>(null);
     const dispatch = useDispatch();
 
-    const focusOnInput = () => inputRef.current.focus();
-    const onFormSubmit = event => {
+    const onFormSubmit: FormEventHandler<HTMLFormElement> = (event) => {
+        const focusOnInput = () => inputRef.current!.focus();
+
         event.preventDefault();
         focusOnInput();
         setNewTaskContent("");
@@ -29,19 +32,25 @@ const Form = () => {
                 content: newTaskContentTrimmed,
                 done: false,
                 id: nanoid(),
+                important: false,
             }))
         );
     };
 
-    const onInputChange = ({ target }) => setNewTaskContent(newTaskContent => newTaskContent = target.value);
+    interface InputElement {
+        target: HTMLInputElement;
+    }
+
+    const onInputChange = ({ target }: InputElement) => setNewTaskContent(newTaskContent => newTaskContent = target.value);
 
     return (
         <form onSubmit={onFormSubmit}>
             <HeaderContent
                 title="Dodaj nowe zadanie"
-                extraContent={
+                sideContent={
                     <Button
                         type="button"
+                        disabled={buttonStatus === loadingButtonStatusText}
                         onClick={() => {
                             setButtonStatus(loadingButtonStatusText);
                             setTimeout(() => {
