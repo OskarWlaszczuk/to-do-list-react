@@ -1,6 +1,10 @@
 import styled, { css } from "styled-components";
 
-export const Input = styled.input`
+interface InputProp {
+    $search?: boolean;
+}
+
+export const Input = styled.input<InputProp>`
     padding: 10px;
     border: 2px solid rgba(179, 174, 174, 0.742);
     border-radius: 5px;
