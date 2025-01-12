@@ -1,0 +1,1 @@
+declare module "react-router-dom"//react-router-dom.min
