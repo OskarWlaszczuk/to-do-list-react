@@ -5,7 +5,7 @@ export const Container = styled.div`
     grid-gap: 10px;
     align-items: baseline;
     grid-template-columns: repeat(2, 1fr);
-    border-bottom: 2px solid rgba(179, 174, 174, 0.742);
+    border-bottom: 2px solid ${({ theme }) => theme.colors.nobel};
     padding-top: 0px;
     padding-bottom: 15px;
 
