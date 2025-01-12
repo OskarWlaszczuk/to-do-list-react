@@ -14,11 +14,33 @@ import { downloadExampleTasks } from "../tasksSlice";
 export function TasksPage() {
   const titleOfTasksContent = "Lista zadań";
 
-  const loadingButtonStatusText = "loading";
-  const initialButtonStatusText = "initial";
+  const tasksDownloadStatuses = {
+    initial: "initial",
+    loading: "loading",
+  } as const;
 
-  const [buttonStatus, setButtonStatus] = useState(initialButtonStatusText);
+  type TaskDownloadStatus = keyof typeof tasksDownloadStatuses;
+
+  const [buttonStatus, setButtonStatus] = useState<TaskDownloadStatus>(tasksDownloadStatuses.initial);
+  const areTasksDownloading = buttonStatus === tasksDownloadStatuses.loading;
+
+  const onExampleTasksDownload = () => {
+    setButtonStatus(tasksDownloadStatuses.loading);
+
+    setTimeout(() => {
+      dispatch(downloadExampleTasks());
+      setButtonStatus(tasksDownloadStatuses.initial);
+    }, 1000);
+  };
+
+  const buttonContent = (
+    areTasksDownloading ?
+      <>Ładowanie...</> :
+      <>Pobierz przykładowe zadania</>
+  );
+
   const dispatch = useAppDispatch();
+
   return (
     <>
       <PageTitle content={titleOfTasksContent} />
@@ -29,32 +51,18 @@ export function TasksPage() {
             sideContent={
               <Button
                 type="button"
-                disabled={buttonStatus === loadingButtonStatusText}
-                onClick={() => {
-                  setButtonStatus(loadingButtonStatusText);
-                  setTimeout(() => {
-                    dispatch(downloadExampleTasks());
-                    setButtonStatus(initialButtonStatusText);
-                  }, 1000)
-                }}
+                disabled={areTasksDownloading}
+                onClick={onExampleTasksDownload}
               >
-                {
-                  buttonStatus === loadingButtonStatusText ?
-                    <>Ładowanie...</> :
-                    <>Pobierz przykładowe zadania</>
-                }
+                {buttonContent}
               </Button>
             }
           />
         }
-        body={
-          <Form />
-        }
+        body={<Form />}
       />
       <Section
-        title={
-          <HeaderPanel title={titleOfTasksContent} sideContent={<Buttons />} />
-        }
+        title={<HeaderPanel title={titleOfTasksContent} sideContent={<Buttons />} />}
         body={
           <>
             <Stats />
