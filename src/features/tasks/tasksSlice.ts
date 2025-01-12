@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { getInitialTasks } from './tasksLocaleStorage';
 import { tasksListKey } from '../../tasksListKey';
-import { TaskData } from '../../common/TaskData';
+import { TaskData } from '../../common/aliases/interfaces/TaskData';
 import { RootState } from './store';
 
 interface TasksState {
@@ -72,8 +72,11 @@ const selectTasksState = (state: RootState) => state.tasks;
 
 export const selectTasks = (state: RootState) => selectTasksState(state).tasks;
 export const selectHideDoneTasks = (state: RootState) => selectTasksState(state).hideDoneTasks;
-export const selectIsAllTasksDone = (state: RootState) => selectTasks(state).every(({ done }) => done);
-export const selectIsTasksEmpty = (state: RootState) => selectTasks(state).length === 0;
+
+export const selectAreAllTasksDone = (state: RootState) => selectTasks(state).every(({ done }) => done);
+export const selectAreSomeTasksDone = (state: RootState) => selectTasks(state).some(({ done }) => done);
+export const selectIsTasksListEmpty = (state: RootState) => selectTasks(state).length === 0;
+
 export const selectTasksLength = (state: RootState) => selectTasks(state).length;
 export const selectTaskById = (state: RootState, taskId: TaskId) => selectTasks(state).find(({ id }) => id === taskId);
 export const selectTaskByQuery = (state: RootState, query: QueryValue) => {
@@ -85,6 +88,5 @@ export const selectTaskByQuery = (state: RootState, query: QueryValue) => {
     return tasks.filter(({ content }) => content.toUpperCase().includes(query.toUpperCase().trim()));
 };
 export const selectIsSearchTasksEmpty = (state: RootState, query: QueryValue) => selectTaskByQuery(state, query).length === 0;
-
 
 export const tasksReducer = tasksSlice.reducer;
