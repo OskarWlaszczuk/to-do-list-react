@@ -6,14 +6,14 @@ import Stats from "./Stats";
 import TasksList from "./TasksList"
 import { Search } from "../Search";
 import Buttons from "./Buttons";
-import { Title } from "../../../common/Title";
+import { PageTitle } from "../../../common/PageTitle";
 
 export function TasksPage() {
   const titleOfTasksContent = "Lista zadań";
 
   return (
     <>
-      <Title content={titleOfTasksContent} />
+      <PageTitle content={titleOfTasksContent} />
       <Section
         body={
           <Form />
