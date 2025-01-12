@@ -5,10 +5,9 @@ import reportWebVitals from './reportWebVitals';
 import { GlobalStyles } from './GlobileStyles';
 import { ThemeProvider } from 'styled-components';
 import { theme } from './theme';
-import store from './features/tasks/store';
+import {store} from './features/tasks/store';
 import { Provider } from 'react-redux';
 //Dodać wszędzie export/import {named}
-
 
 const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(
