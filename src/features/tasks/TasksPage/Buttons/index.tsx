@@ -4,8 +4,9 @@ import {
     selectIsSearchTasksEmpty,
     selectTasks,
     selectHideDoneTasks,
-    selectIsAllTasksDone,
-    selectIsTasksEmpty
+    selectAreAllTasksDone,
+    selectIsTasksListEmpty,
+    selectAreSomeTasksDone
 } from "../../tasksSlice";
 import { Section, Button } from "./styled";
 import { queryKey } from "../../queryKey";
@@ -14,33 +15,35 @@ import { RootState } from "../../store";
 import { useAppDispatch, useAppSelector } from "../../../../reduxTypedHooks";
 
 const Buttons = () => {
-    const tasks = useAppSelector(selectTasks)
-    const hideDoneTasks = useAppSelector(selectHideDoneTasks);
-    const isAllDone = useAppSelector(selectIsAllTasksDone);
-    const isTasksEmpty = useAppSelector(selectIsTasksEmpty);
     const query = useQueryParameter(queryKey);
-
-    const isSearchTasksEmpty = useAppSelector((state: RootState) => selectIsSearchTasksEmpty(state, query!));
     const dispatch = useAppDispatch();
+
+    const hideDoneTasks = useAppSelector(selectHideDoneTasks);
+
+    const areAllDone = useAppSelector(selectAreAllTasksDone);
+    const areSomeDone = useAppSelector(selectAreSomeTasksDone);
+
+    const isTasksListEmpty = useAppSelector(selectIsTasksListEmpty);
+    const isSearchTasksEmpty = useAppSelector((state: RootState) => selectIsSearchTasksEmpty(state, query!));
 
     return (
         <Section>
-            {!isTasksEmpty && (
+            {!isTasksListEmpty && (
                 <>
                     <Button
-                        disabled={isSearchTasksEmpty}
+                        disabled={isSearchTasksEmpty || !areSomeDone}
                         onClick={() => dispatch(toggleHideDoneTasks())}>
                         {
-                            hideDoneTasks && tasks.some(({ done }) => done) ?
+                            hideDoneTasks && areSomeDone ?
                                 'Pokaż' :
                                 'Ukryj'
                         } ukończone
                     </Button>
                     <Button
-                        disabled={isAllDone || isSearchTasksEmpty}
+                        disabled={areAllDone || isSearchTasksEmpty}
                         onClick={() => dispatch(toggleAllTaskDone())}
                     >
-                        {isAllDone ? <>Ukończono</> : <> Ukończ wszystkie</>}
+                        {areAllDone ? <>Ukończono</> : <> Ukończ wszystkie</>}
                     </Button>
                 </>
             )}
