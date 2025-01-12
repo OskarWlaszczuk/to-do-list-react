@@ -16,7 +16,8 @@ export const AuthorPage = () => (
                         Cześć! <br />Jestem młodym, zdeterminowanym i zdescyplinowanym chłopakiem, który z pasją podchodzi do siłowni i programowania. Każdego dnia staram się rozwijać swoje umiejętności, zarówno fizyczne, jak i umysłowe, starając się przy okazji dobrze, przy tym bawić. Moje zaangażowanie w treningi i kodowanie pozwala mi nieustannie pokonywać własne granice i osiągać nowe cele.
                     </Content>
                     <Content>
-                        Jeżeli chcesz się dowiedzieć więcej o projekcie, sprawdź moje <a
+                        Jeżeli chcesz się dowiedzieć więcej o projekcie, sprawdź moje
+                        <a
                             title="Repozytorium Listy zadań na GitHub"
                             target="_blank"
                             rel="noreferrer"
