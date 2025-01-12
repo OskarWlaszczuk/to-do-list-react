@@ -1,6 +1,7 @@
 export const theme = {
-  mainColor: {
-    color: "teal",
+  colors: {
+    teal: "#008080",
+    nobel: "#b3aeaebd",
   },
   breakPoints: {
     smallLaptop: 950,
