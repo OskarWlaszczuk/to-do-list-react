@@ -2,12 +2,13 @@ import Section from "../../common/Section";
 import { PageTitle } from "../../common/PageTitle";
 import { Image } from "./styled";
 import { CenteredParagraph } from "../../common/CenteredParagraph";
+import { SectionHeader } from "../../common/SectionHeader";
 
 export const AuthorPage = () => (
     <>
         <PageTitle content="Autor" />
         <Section
-            title="Oskar Właszczuk"
+            title={<SectionHeader $centered>Oskar Właszczuk</SectionHeader>}
             body={
 
                 <>

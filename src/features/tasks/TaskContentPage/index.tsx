@@ -5,6 +5,7 @@ import Section from "../../../common/Section";
 import { PageTitle } from "../../../common/PageTitle";
 import { NotFound } from "../../../common/NotFound";
 import { RootState } from "../store";
+import { SectionHeader } from "../../../common/SectionHeader";
 
 export const TaskContentPage = () => {
     const { id } = useParams();
@@ -15,7 +16,9 @@ export const TaskContentPage = () => {
             <PageTitle content="Szczegóły zadania" />
             <Section
                 title={
-                    task ? task.content : <NotFound content="Nie znaleziono zadania" />
+                    task ?
+                        <SectionHeader $centered>{task.content}</SectionHeader> :
+                        <NotFound content="Nie znaleziono zadania" />
                 }
                 body={
                     <p>
