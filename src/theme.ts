@@ -8,4 +8,4 @@ export const theme = {
     mobileL: 450,
     mobileM: 370,
   }
-};
+} as const;
