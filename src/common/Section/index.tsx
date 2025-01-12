@@ -1,15 +1,14 @@
 import { ReactElement, ReactNode } from "react";
-import { SectionHeader } from "../SectionHeader";
 import { Wrapper } from "./styled";
 
 interface SectionProps {
+    title: ReactNode;
     body: ReactElement;
-    title?: ReactNode;
 }
 
 const Section = ({ body, title }: SectionProps) => (
     <Wrapper >
-        {title && <SectionHeader>{title}</SectionHeader>}
+        {title}
         <article>{body}</article>
     </Wrapper>
 );
