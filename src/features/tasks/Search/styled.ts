@@ -14,8 +14,9 @@ export const Wrapper = styled.div`
     @media (max-width:${({ theme }) => theme.breakPoints.mobileL}px) {
         margin: 20px auto;
         justify-items: center;
-        justify-content: center;
-        grid-gap: 5px;
+        justify-content: space-between;
+        grid-gap: 20px;
+        grid-template-columns: auto 1fr;
     };
 `;
 

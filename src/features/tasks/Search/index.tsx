@@ -11,7 +11,7 @@ export const Search = () => {
     const query = useQueryParameter(queryKey);
     const replaceQueryParameter = useReplaceQueryParameter();
 
-    const onInputChange = ({ target }) => {
+    const onInputChange = ({ target }: { target: HTMLInputElement }) => {
         replaceQueryParameter({
             key: queryKey,
             value: target.value,
@@ -19,17 +19,21 @@ export const Search = () => {
     };
 
     return (
-        !isTasksEmpty && (
-            <Wrapper>
-                <Img src="https://cdn-icons-png.flaticon.com/128/3839/3839020.png" alt="img" />
-                <Input
-                    $search
-                    name="searchTaskField"
-                    onChange={onInputChange}
-                    value={query || ""}
-                    placeholder="Szukaj zadania"
-                />
-            </Wrapper>
-        )
+        <>
+            {
+                !isTasksEmpty && (
+                    <Wrapper>
+                        <Img src="https://cdn-icons-png.flaticon.com/512/1167/1167092.png" alt="img" />
+                        <Input
+                            $search
+                            name="searchTaskField"
+                            onChange={onInputChange}
+                            value={query || ""}
+                            placeholder="Szukaj zadania"
+                        />
+                    </Wrapper>
+                )
+            }
+        </>
     );
 };
