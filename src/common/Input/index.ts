@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 
 interface InputProp {
-    $search?: boolean;
+    $filterInput?: boolean;
 }
 
 export const Input = styled.input<InputProp>`
@@ -9,7 +9,7 @@ export const Input = styled.input<InputProp>`
     border: 2px solid ${({ theme }) => theme.colors.nobel};
     border-radius: 5px;
 
-    ${({ $search }) => $search && css`
+    ${({ $filterInput }) => $filterInput && css`
         transition: 1.5s;
         transform-origin: left;
         width: 65%;
