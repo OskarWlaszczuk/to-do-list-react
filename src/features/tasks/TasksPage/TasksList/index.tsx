@@ -10,10 +10,10 @@ import { useQueryParameter } from "../../useQueryParameter";
 import { RootState } from "../../store";
 
 const TasksList = () => {
-  const query = useQueryParameter(queryKey);
+  const queryValue = useQueryParameter(queryKey);
 
-  const searchTasks = useSelector((state: RootState) => selectTaskByQuery(state, query));
-  const isSearchTasksEmpty = useSelector((state: RootState) => selectIsSearchTasksEmpty(state, query));
+  const searchTasks = useSelector((state: RootState) => selectTaskByQuery(state, queryValue));
+  const isSearchTasksEmpty = useSelector((state: RootState) => selectIsSearchTasksEmpty(state, queryValue));
 
   const allTasks = useSelector(selectTasks);
   const hideDoneTasks = useSelector(selectHideDoneTasks);
@@ -21,47 +21,51 @@ const TasksList = () => {
   const dispatch = useDispatch();
 
   return (
-    isSearchTasksEmpty && query ?
-      <NotFound content="Nie znaleziono zadania" /> :
-      (!allTasks.length ?
-        <EmptyTasksList /> :
-        <List>
-          {searchTasks.map(({ id, done, content, important }) => {
-            return (
-              (!hideDoneTasks || (hideDoneTasks && !done)) && (
-                <Item key={id}>
-                  <ButtonsBar>
-                    <ButtonsBarItem
-                      title="Ustaw, jako ważne"
-                      disabled={done}
-                      $activated={important && !done}
-                      onClick={() => dispatch(toggleImportantContent(id))}
-                    >
-                      B
-                    </ButtonsBarItem>
-                  </ButtonsBar>
-                  <ToggleDoneButton onClick={() => dispatch(toggleTaskDone(id))}>
-                    {done ? "✔" : ""}
-                  </ToggleDoneButton>
-                  <StyledLink
-                    title="Wejdź w szczegóły zadania"
-                    to={`/tasks/${id}`}
-                  >
-                    <Content
-                      $justified={content.length > 160 ? true : false}
-                      $important={important && !done}
-                      $donedItem={done}
-                    >
-                      {content.slice(0, 1).toUpperCase() + content.slice(1)}
-                    </Content>
-                  </StyledLink>
-                  <Button onClick={() => dispatch(removeTask(id))}>🗑️</Button>
-                </Item>
-              )
-            );
-          })}
-        </List>
-      )
+    <>
+      {
+        isSearchTasksEmpty && !!queryValue ?
+          <NotFound content="Nie znaleziono zadania" /> :
+          (!allTasks.length ?
+            <EmptyTasksList /> :
+            <List>
+              {searchTasks.map(({ id, done, content, important }) => {
+                return (
+                  (!hideDoneTasks || (hideDoneTasks && !done)) && (
+                    <Item key={id}>
+                      <ButtonsBar>
+                        <ButtonsBarItem
+                          title="Ustaw, jako ważne"
+                          disabled={done}
+                          $activated={important && !done}
+                          onClick={() => dispatch(toggleImportantContent(id))}
+                        >
+                          B
+                        </ButtonsBarItem>
+                      </ButtonsBar>
+                      <ToggleDoneButton onClick={() => dispatch(toggleTaskDone(id))}>
+                        {done ? "✔" : ""}
+                      </ToggleDoneButton>
+                      <StyledLink
+                        title="Wejdź w szczegóły zadania"
+                        to={`/tasks/${id}`}
+                      >
+                        <Content
+                          $justified={content.length > 160 ? true : false}
+                          $important={important && !done}
+                          $donedItem={done}
+                        >
+                          {content.slice(0, 1).toUpperCase() + content.slice(1)}
+                        </Content>
+                      </StyledLink>
+                      <Button onClick={() => dispatch(removeTask(id))}>🗑️</Button>
+                    </Item>
+                  )
+                );
+              })}
+            </List>
+          )
+      }
+    </>
   );
 };
 
