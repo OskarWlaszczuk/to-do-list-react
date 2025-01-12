@@ -2,6 +2,7 @@ import styled, { css } from "styled-components";
 
 interface SectionHeaderProps {
     $spaceAround?: boolean;
+    $centered?: boolean;
 }
 
 export const SectionHeader = styled.header<SectionHeaderProps>`
@@ -14,7 +15,10 @@ export const SectionHeader = styled.header<SectionHeaderProps>`
     };
 
     ${({ $spaceAround }) => $spaceAround && css`
-        margin-top: 20px;
-        margin-bottom: 20px;
+        margin: 20px 0;
+    `};
+
+    ${({ $centered }) => $centered && css`
+        text-align: center;
     `};
 `;
