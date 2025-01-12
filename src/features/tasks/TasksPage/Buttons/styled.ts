@@ -15,7 +15,7 @@ export const Section = styled.section`
 
 export const Button = styled.button`
     justify-self: end;
-    color: ${({theme}) => theme.mainColor.color};
+    color: ${({theme}) => theme.colors.teal};
     background-color: transparent;
     border: none;
     transition: 0.3s;

@@ -22,7 +22,7 @@ export const Container = styled.div`
 
 export const SubmitButton = styled.button`
     color: white;
-    background-color: ${({ theme }) => theme.mainColor.color};
+    background-color: ${({ theme }) => theme.colors.teal};
     padding: 10px;
     border: none;
     border-radius: 3px;
