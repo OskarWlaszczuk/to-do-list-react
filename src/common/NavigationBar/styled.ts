@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
+import {NavLink} from 'react-router-dom';
 
 export const Navigation = styled.nav`
     background: rgb(214,192,233);
@@ -37,7 +37,7 @@ export const StyledNavLink = styled(NavLink).attrs(() => ({
     border-left: 2px solid rgba(179, 174, 174, 0.742);
     color: rgb(0 0 0 / 68%);
     text-decoration: none;
-    transition: 1.5s;
+    transition: 1s;
     padding: 1.8%;
     color: rgb(0 0 0 / 68%);
     text-wrap: nowrap;
