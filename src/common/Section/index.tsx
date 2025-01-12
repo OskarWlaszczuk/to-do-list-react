@@ -1,5 +1,5 @@
 import { ReactElement, ReactNode } from "react";
-import { Header } from "../Header";
+import { SectionHeader } from "../SectionHeader";
 import { Wrapper } from "./styled";
 
 interface SectionProps {
@@ -9,7 +9,7 @@ interface SectionProps {
 
 const Section = ({ body, title }: SectionProps) => (
     <Wrapper >
-        {title && <Header>{title}</Header>}
+        {title && <SectionHeader>{title}</SectionHeader>}
         <article>{body}</article>
     </Wrapper>
 );
