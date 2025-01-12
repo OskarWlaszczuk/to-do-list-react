@@ -1,9 +1,9 @@
-import { Content } from "../Content";
+import { CenteredParagraph } from "../CenteredParagraph";
 
 interface NotFoundProp {
     content: string;
 }
 
 export const NotFound = ({ content }: NotFoundProp) => (
-    <Content $notFound>{content}</Content>
+    <CenteredParagraph $notFound>{content}</CenteredParagraph>
 );
