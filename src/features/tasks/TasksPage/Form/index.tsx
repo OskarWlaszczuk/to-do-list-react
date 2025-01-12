@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { addTask } from "../../tasksSlice";
 import { nanoid } from "@reduxjs/toolkit";
 import { Container, SubmitButton } from "./styled";
-import { HeaderContent } from "../../../../common/HeaderContent";
+import { HeaderPanel } from "../../../../common/HeaderPanel";
 import { Input } from "../../../../common/Input";
 import { Button } from "../Buttons/styled";
 import { downloadExampleTasks } from "../../tasksSlice";
@@ -45,7 +45,7 @@ const Form = () => {
 
     return (
         <form onSubmit={onFormSubmit}>
-            <HeaderContent
+            <HeaderPanel
                 title="Dodaj nowe zadanie"
                 sideContent={
                     <Button

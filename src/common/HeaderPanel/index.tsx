@@ -2,12 +2,12 @@ import { ReactNode } from "react";
 import { Container } from "./styled";
 import { SectionHeader } from "../SectionHeader";
 
-interface HeaderContentProps {
+interface HeaderPanelProps {
     title: string;
     sideContent: ReactNode;
 }
 
-export const HeaderContent = ({ title, sideContent }: HeaderContentProps) => (
+export const HeaderPanel = ({ title, sideContent }: HeaderPanelProps) => (
     <Container>
         <SectionHeader>{title}</SectionHeader>
         {sideContent}

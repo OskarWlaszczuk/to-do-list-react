@@ -1,7 +1,7 @@
 import React from "react";
 import Form from "./Form";
 import Section from "../../../common/Section";
-import { HeaderContent } from "../../../common/HeaderContent";
+import { HeaderPanel } from "../../../common/HeaderPanel";
 import Stats from "./Stats";
 import TasksList from "./TasksList"
 import { Search } from "../Search";
@@ -22,7 +22,7 @@ export function TasksPage() {
       <Section
         body={
           <>
-            <HeaderContent title={titleOfTasksContent} sideContent={<Buttons />} />
+            <HeaderPanel title={titleOfTasksContent} sideContent={<Buttons />} />
             <Stats />
             <Search />
             <TasksList />
