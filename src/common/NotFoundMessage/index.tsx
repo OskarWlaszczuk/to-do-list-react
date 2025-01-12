@@ -5,5 +5,5 @@ interface NotFoundMessageProp {
 }
 
 export const NotFoundMessage = ({ content }: NotFoundMessageProp) => (
-    <CenteredParagraph $notFound>{content}</CenteredParagraph>
+    <CenteredParagraph $noResults >{content}</CenteredParagraph>
 );
