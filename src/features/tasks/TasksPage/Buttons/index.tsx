@@ -2,7 +2,6 @@ import {
     toggleHideDoneTasks,
     toggleAllTaskDone,
     selectIsSearchTasksEmpty,
-    selectTasks,
     selectHideDoneTasks,
     selectAreAllTasksDone,
     selectIsTasksListEmpty,
@@ -26,29 +25,34 @@ const Buttons = () => {
     const isTasksListEmpty = useAppSelector(selectIsTasksListEmpty);
     const isSearchTasksEmpty = useAppSelector((state: RootState) => selectIsSearchTasksEmpty(state, query!));
 
+    const buttonsRenderData = [
+        {
+            action: toggleHideDoneTasks,
+            disabledCondition: isSearchTasksEmpty || !areSomeDone,
+            content: <>{hideDoneTasks && areSomeDone ? "Pokaż" : "Ukryj"} ukończone</>
+        },
+        {
+            action: toggleAllTaskDone,
+            disabledCondition: areAllDone || isSearchTasksEmpty,
+            content: areAllDone ? "Ukończono" : "Ukończ wszystkie",
+        },
+    ];
+
     return (
         <Section>
             {!isTasksListEmpty && (
-                <>
+                buttonsRenderData.map(({ action, disabledCondition, content }, index) => (
                     <Button
-                        disabled={isSearchTasksEmpty || !areSomeDone}
-                        onClick={() => dispatch(toggleHideDoneTasks())}>
-                        {
-                            hideDoneTasks && areSomeDone ?
-                                'Pokaż' :
-                                'Ukryj'
-                        } ukończone
-                    </Button>
-                    <Button
-                        disabled={areAllDone || isSearchTasksEmpty}
-                        onClick={() => dispatch(toggleAllTaskDone())}
+                        key={index}
+                        onClick={() => dispatch(action())}
+                        disabled={disabledCondition}
                     >
-                        {areAllDone ? <>Ukończono</> : <> Ukończ wszystkie</>}
+                        {content}
                     </Button>
-                </>
+                ))
             )}
         </Section>
-    )
+    );
 };
 
 export default Buttons;
