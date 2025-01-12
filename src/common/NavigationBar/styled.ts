@@ -1,8 +1,7 @@
-import styled from "styled-components";
-import {NavLink} from 'react-router-dom';
+import styled, { css } from "styled-components";
+import { NavLink } from 'react-router-dom';
 
 export const Navigation = styled.nav`
-    background: rgb(214,192,233);
     background: linear-gradient(167deg, rgba(214,192,233,1) 31%, rgba(238,226,248,1) 63%);
     width: 100%;
     border-bottom-left-radius: 35px;
@@ -27,33 +26,32 @@ export const List = styled.ul`
 
 const activeClassName = "link-active";
 
+const activeAndHoverStyles = css`
+    background-color: ${({ theme }) => theme.colors.white};
+    border: 2px solid ${({ theme }) => theme.colors.nobel};
+    border-radius: 5px;
+    font-weight: 500;
+`;
+
 export const StyledNavLink = styled(NavLink).attrs(() => ({
     activeClassName,
 }))`
     margin: 5px;
     flex-basis: 30%; 
     text-align: center;
-    border-right: 2px solid rgba(179, 174, 174, 0.742);
-    border-left: 2px solid rgba(179, 174, 174, 0.742);
-    color: rgb(0 0 0 / 68%);
+    border-right: 2px solid ${({ theme }) => theme.colors.nobel};
+    border-left: 2px solid  ${({ theme }) => theme.colors.nobel};
     text-decoration: none;
     transition: 1s;
     padding: 1.8%;
-    color: rgb(0 0 0 / 68%);
-    text-wrap: nowrap;
+    color:  ${({ theme }) => theme.colors.lightBlack};
 
     &:hover{
-        flex-basis: 40%; 
-        background-color: white;
-        border: 2px solid rgba(179, 174, 174, 0.742);
-        border-radius: 5px;
-        font-weight: 500;
+       ${activeAndHoverStyles}
     }   
 
     &.${activeClassName} {
-        background-color: white;
-        border: 2px solid rgba(179, 174, 174, 0.742);
-        border-radius: 5px;
-        font-weight: 600;
+        ${activeAndHoverStyles}
+        flex-basis: 40%; 
     };
 `;
