@@ -6,7 +6,7 @@ interface InputProp {
 
 export const Input = styled.input<InputProp>`
     padding: 10px;
-    border: 2px solid rgba(179, 174, 174, 0.742);
+    border: 2px solid ${({ theme }) => theme.colors.nobel};
     border-radius: 5px;
 
     ${({ $search }) => $search && css`
