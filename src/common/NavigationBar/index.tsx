@@ -7,4 +7,4 @@ export const NavigationBar = () => (
             <StyledNavLink to="/author" >Autor</StyledNavLink>
         </List>
     </Navigation>
-)
+);
