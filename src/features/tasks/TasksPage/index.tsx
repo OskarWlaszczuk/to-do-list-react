@@ -5,7 +5,7 @@ import { HeaderPanel } from "../../../common/HeaderPanel";
 import Stats from "./Stats";
 import TasksList from "./TasksList"
 import { Search } from "../Search";
-import Buttons from "./Buttons";
+import {Buttons} from "./Buttons";
 import { PageTitle } from "../../../common/PageTitle";
 import { Button } from "./Buttons/styled";
 import { useAppDispatch } from "../../../reduxTypedHooks";
@@ -15,21 +15,21 @@ export function TasksPage() {
   const titleOfTasksContent = "Lista zadań";
 
   const tasksDownloadStatuses = {
-    initial: "initial",
+    idle: "idle",
     loading: "loading",
   } as const;
 
-  type TaskDownloadStatus = keyof typeof tasksDownloadStatuses;
+  type ExampleTasksDownloadStatus = keyof typeof tasksDownloadStatuses;
 
-  const [buttonStatus, setButtonStatus] = useState<TaskDownloadStatus>(tasksDownloadStatuses.initial);
-  const areTasksDownloading = buttonStatus === tasksDownloadStatuses.loading;
+  const [exampleTasksStatus, setExampleTasksStatus] = useState<ExampleTasksDownloadStatus>(tasksDownloadStatuses.idle);
+  const areTasksDownloading = exampleTasksStatus === tasksDownloadStatuses.loading;
 
   const onExampleTasksDownload = () => {
-    setButtonStatus(tasksDownloadStatuses.loading);
+    setExampleTasksStatus(tasksDownloadStatuses.loading);
 
     setTimeout(() => {
       dispatch(downloadExampleTasks());
-      setButtonStatus(tasksDownloadStatuses.initial);
+      setExampleTasksStatus(tasksDownloadStatuses.idle);
     }, 1000);
   };
 
