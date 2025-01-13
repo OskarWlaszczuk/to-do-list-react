@@ -1,12 +1,12 @@
-import { useSelector } from "react-redux";
 import { Content, ItemWrapper, Item } from "./styled";
 import { selectTasks, selectIsTasksListEmpty, selectTasksLength } from "../../tasksSlice";
 import { SectionHeader } from "../../../../common/SectionHeader";
+import { useAppSelector } from "../../../../reduxTypedHooks";
 
 const Stats = () => {
-    const tasks = useSelector(selectTasks)
-    const tasksLenght = useSelector(selectTasksLength)
-    const isTasksEmpty = useSelector(selectIsTasksListEmpty);
+    const tasks = useAppSelector(selectTasks)
+    const tasksLenght = useAppSelector(selectTasksLength)
+    const isTasksEmpty = useAppSelector(selectIsTasksListEmpty);
 
     return (
         <>
@@ -15,7 +15,7 @@ const Stats = () => {
                     <Content>
                         <SectionHeader $spaceAround>Dane zadań 📊</SectionHeader>
                         <ItemWrapper>
-                            <Item>Liczba wszystkich zadań: <strong>{tasksLenght}</strong></Item>
+                            <Item>Liczba wszystkich zadań: <b>{tasksLenght}</b></Item>
                             <Item >
                                 Liczba ukończonych zadań: <strong>{
                                     ((tasks.filter(({ done }) => done).length / tasksLenght) * 100).toFixed(0)}%
