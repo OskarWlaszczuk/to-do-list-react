@@ -1,12 +1,12 @@
 import { useSelector } from "react-redux";
 import { Content, ItemWrapper, Item } from "./styled";
-import { selectTasks, selectIsTasksEmpty, selectTasksLength } from "../../tasksSlice";
+import { selectTasks, selectIsTasksListEmpty, selectTasksLength } from "../../tasksSlice";
 import { SectionHeader } from "../../../../common/SectionHeader";
 
 const Stats = () => {
     const tasks = useSelector(selectTasks)
     const tasksLenght = useSelector(selectTasksLength)
-    const isTasksEmpty = useSelector(selectIsTasksEmpty);
+    const isTasksEmpty = useSelector(selectIsTasksListEmpty);
 
     return (
         <>

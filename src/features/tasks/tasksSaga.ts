@@ -3,7 +3,7 @@ import { downloadExampleTasks, selectTasks, setTasks } from "./tasksSlice";
 import { getExampleTasksJson } from "./getExampleTasksJson";
 import { saveTasksInLocaleStorage } from "./tasksLocaleStorage";
 import { tasksListKey } from "../../tasksListKey";
-import { TaskData } from "../../common/TaskData";
+import { TaskData } from "../../common/aliases/interfaces/TaskData";
 
 function* downloadExampleTasksHandler(): Generator<
     PutEffect | CallEffect<TaskData[]>,

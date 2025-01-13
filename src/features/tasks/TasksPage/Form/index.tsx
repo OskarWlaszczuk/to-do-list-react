@@ -4,7 +4,7 @@ import { addTask } from "../../tasksSlice";
 import { nanoid } from "@reduxjs/toolkit";
 import { Container, SubmitButton } from "./styled";
 import { Input } from "../../../../common/Input";
-import { TaskData } from "../../../../common/TaskData";
+import { TaskData } from "../../../../common/aliases/interfaces/TaskData";
 
 const Form = () => {
     const [newTaskContent, setNewTaskContent] = useState<TaskData["content"]>("Zagrać w Wiedźmina");
