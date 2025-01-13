@@ -8,6 +8,8 @@ const Stats = () => {
     const tasksLenght = useAppSelector(selectTasksLength)
     const isTasksEmpty = useAppSelector(selectIsTasksListEmpty);
 
+   
+
     return (
         <>
             {
@@ -17,14 +19,14 @@ const Stats = () => {
                         <ItemWrapper>
                             <Item>Liczba wszystkich zadań: <b>{tasksLenght}</b></Item>
                             <Item >
-                                Liczba ukończonych zadań: <strong>{
+                                Liczba ukończonych zadań: <b>{
                                     ((tasks.filter(({ done }) => done).length / tasksLenght) * 100).toFixed(0)}%
-                                </strong>
+                                </b>
                             </Item>
                             <Item>
-                                Liczba ważnych zadań: <strong>
+                                Liczba ważnych zadań: <b>
                                     {tasks.filter(({ important, done }) => important && !done).length}
-                                </strong>
+                                </b>
                             </Item>
                         </ItemWrapper>
                     </Content>
