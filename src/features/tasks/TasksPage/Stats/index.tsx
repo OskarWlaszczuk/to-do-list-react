@@ -1,13 +1,14 @@
 import { Content, ItemWrapper, Item } from "./styled";
-import { selectTasks, selectIsTasksListEmpty, selectTasksLength, selectImportantTasksLength } from "../../tasksSlice";
+import { selectIsTasksListEmpty, selectTasksLength, selectImportantTasksLength, selectDoneTasksLength } from "../../tasksSlice";
 import { SectionHeader } from "../../../../common/SectionHeader";
 import { useAppSelector } from "../../../../reduxTypedHooks";
 
 const Stats = () => {
-    const tasks = useAppSelector(selectTasks)
+    const isTasksEmpty = useAppSelector(selectIsTasksListEmpty);
+
     const tasksLenght = useAppSelector(selectTasksLength)
     const importantTasksLength = useAppSelector(selectImportantTasksLength);
-    const isTasksEmpty = useAppSelector(selectIsTasksListEmpty);
+    const doneTasksLength = useAppSelector(selectDoneTasksLength);
 
     const statsRenderData = [
         {
@@ -16,11 +17,11 @@ const Stats = () => {
         },
         {
             description: "Liczba ważnych zadań",
-            result:importantTasksLength,
+            result: importantTasksLength,
         },
         {
             description: "Procent ukończonych zadań",
-            result: <>{((tasks.filter(({ done }) => done).length / tasksLenght) * 100).toFixed(0)}%</>,
+            result: <>{((doneTasksLength / tasksLenght) * 100).toFixed(0)}%</>,
         },
     ]
 
