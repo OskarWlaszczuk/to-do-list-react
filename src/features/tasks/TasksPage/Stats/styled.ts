@@ -7,7 +7,7 @@ export const Content = styled.section`
     };
 `;
 
-export const ItemWrapper = styled.section`
+export const ItemsWrapper = styled.section`
     border-left: 2px solid black;
 `;
 

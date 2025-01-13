@@ -1,4 +1,4 @@
-import { Content, ItemWrapper, Item } from "./styled";
+import { Content, ItemsWrapper, Item } from "./styled";
 import { selectIsTasksListEmpty, selectTasksLength, selectImportantTasksLength, selectDoneTasksLength } from "../../tasksSlice";
 import { SectionHeader } from "../../../../common/SectionHeader";
 import { useAppSelector } from "../../../../reduxTypedHooks";
@@ -31,13 +31,13 @@ const Stats = () => {
                 !isTasksEmpty && (
                     <Content>
                         <SectionHeader $spaceAround>Dane zadań 📊</SectionHeader>
-                        <ItemWrapper>
+                        <ItemsWrapper>
                             {
                                 statsRenderData.map(({ description, result }) => (
                                     <Item >{description}: <b>{result}</b></Item>
                                 ))
                             }
-                        </ItemWrapper>
+                        </ItemsWrapper>
                     </Content>
                 )
             }
