@@ -1,4 +1,4 @@
-import { call, CallEffect, put, PutEffect, select, SelectEffect, takeEvery, takeLatest, Effect } from "redux-saga/effects";
+import { call, CallEffect, put, PutEffect, select, SelectEffect, takeEvery, takeLatest, Effect, delay } from "redux-saga/effects";
 import { downloadExampleTasks, selectTasks, setTasks } from "./tasksSlice";
 import { getExampleTasksJson } from "./getExampleTasksJson";
 import { saveTasksInLocaleStorage } from "./tasksLocaleStorage";
@@ -11,6 +11,7 @@ function* downloadExampleTasksHandler(): Generator<
     TaskData[]
 > {
     try {
+        yield delay(1000)
         const exampleTasks = yield call(getExampleTasksJson);
         yield put(setTasks(exampleTasks));
     } catch (error) {
