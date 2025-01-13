@@ -12,8 +12,10 @@ import { queryKey } from "../../queryKey";
 import { useQueryParameter } from "../../useQueryParameter";
 import { RootState } from "../../store";
 import { useAppDispatch, useAppSelector } from "../../../../reduxTypedHooks";
+import { ReactNode } from "react";
+import { ActionCreatorWithoutPayload } from "@reduxjs/toolkit";
 
-const Buttons = () => {
+export const Buttons = () => {
     const query = useQueryParameter(queryKey);
     const dispatch = useAppDispatch();
 
@@ -25,7 +27,13 @@ const Buttons = () => {
     const isTasksListEmpty = useAppSelector(selectIsTasksListEmpty);
     const isSearchTasksEmpty = useAppSelector((state: RootState) => selectIsSearchTasksEmpty(state, query!));
 
-    const buttonsRenderData = [
+    interface ButtonRenderData {
+        action: ActionCreatorWithoutPayload;
+        disabledCondition: boolean;
+        content: ReactNode;
+    }
+
+    const buttonsRenderData: ButtonRenderData[] = [
         {
             action: toggleHideDoneTasks,
             disabledCondition: isSearchTasksEmpty || !areSomeDone,
@@ -54,5 +62,3 @@ const Buttons = () => {
         </Section>
     );
 };
-
-export default Buttons;
