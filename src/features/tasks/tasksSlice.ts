@@ -78,6 +78,8 @@ export const selectAreSomeTasksDone = (state: RootState) => selectTasks(state).s
 export const selectIsTasksListEmpty = (state: RootState) => selectTasks(state).length === 0;
 
 export const selectTasksLength = (state: RootState) => selectTasks(state).length;
+export const selectImportantTasksLength = (state: RootState) => selectTasks(state).filter(({ important, done }) => important && !done).length;
+
 export const selectTaskById = (state: RootState, taskId: TaskId) => selectTasks(state).find(({ id }) => id === taskId);
 export const selectTaskByQuery = (state: RootState, query: QueryValue) => {
     const tasks = selectTasks(state);
