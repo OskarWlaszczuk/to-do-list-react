@@ -67,7 +67,7 @@ export function TasksPage() {
   //   },
   // ];
 
-  const useTasksManagementButtonsRenderData = () => {
+  const useTasksListButtonsRenderData = () => {
 
     const hideDoneTasks = useAppSelector(selectHideDoneTasks);
 
@@ -77,7 +77,7 @@ export function TasksPage() {
 
     const isSearchTasksEmpty = useAppSelector((state: RootState) => selectIsSearchTasksEmpty(state, query!));
 
-    const tasksManagementButtonsRenderData = [
+    const tasksListButtonsRenderData = [
       {
         clickEventHandler: () => dispatch(toggleHideDoneTasks()),
         disabledCondition: isSearchTasksEmpty || !areSomeDone,
@@ -90,9 +90,9 @@ export function TasksPage() {
       },
     ];
 
-    return tasksManagementButtonsRenderData;
+    return tasksListButtonsRenderData;
   };
-  const tasksManagementButtonsRenderData = useTasksManagementButtonsRenderData();
+  const tasksListButtonsRenderData = useTasksListButtonsRenderData();
 
   return (
     <>
@@ -122,7 +122,7 @@ export function TasksPage() {
         title={
           <HeaderPanel2
             title={titleOfTasksContent}
-            buttonsRenderData={tasksManagementButtonsRenderData}
+            buttonsRenderData={tasksListButtonsRenderData}
           />
           // <HeaderPanel title={titleOfTasksContent} sideContent={<ButtonsManagingTasks />}
         }
