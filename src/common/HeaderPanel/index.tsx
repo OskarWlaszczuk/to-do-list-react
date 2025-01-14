@@ -1,25 +1,19 @@
-import { ReactNode } from "react";
 import { Container } from "./styled";
 import { SectionHeader } from "../SectionHeader";
 import { Button, ButtonsContainer } from "../../features/tasks/TasksPage/Buttons/styled";
+import { ButtonRenderData } from "../../features/tasks/TasksPage/interfaces/ButtonRenderData";
 
-interface HeaderPanelProps {
-    title: string;
-    sideContent: ReactNode;
-}
+// interface HeaderPanelProps {
+//     title: string;
+//     sideContent: ReactNode;
+// }
 
-export const HeaderPanel = ({ title, sideContent }: HeaderPanelProps) => (
-    <Container>
-        <SectionHeader>{title}</SectionHeader>
-        {sideContent}
-    </Container>
-);
-
-interface ButtonRenderData {
-    clickEventHandler: () => void;
-    disabledCondition: boolean;
-    content: ReactNode;
-}
+// export const HeaderPanel = ({ title, sideContent }: HeaderPanelProps) => (
+//     <Container>
+//         <SectionHeader>{title}</SectionHeader>
+//         {sideContent}
+//     </Container>
+// );
 
 interface HeaderPanelProps2 {
     title: string;

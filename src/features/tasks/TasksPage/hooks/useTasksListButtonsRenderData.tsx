@@ -10,19 +10,18 @@ import {
   toggleHideDoneTasks
 } from "../../tasksSlice";
 import { useQueryParameter } from "../../useQueryParameter";
+import { ButtonRenderData } from "../interfaces/ButtonRenderData";
 
 export const useTasksListButtonsRenderData = () => {
   const dispatch = useAppDispatch();
 
   const hideDoneTasks = useAppSelector(selectHideDoneTasks);
-
   const areAllDone = useAppSelector(selectAreAllTasksDone);
   const areSomeDone = useAppSelector(selectAreSomeTasksDone);
   const query = useQueryParameter(queryKey);
-
   const isSearchTasksEmpty = useAppSelector((state: RootState) => selectIsSearchTasksEmpty(state, query!));
 
-  const tasksListButtonsRenderData = [
+  const tasksListButtonsRenderData: ButtonRenderData[] = [
     {
       clickEventHandler: () => dispatch(toggleHideDoneTasks()),
       disabledCondition: isSearchTasksEmpty || !areSomeDone,
