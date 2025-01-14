@@ -14,8 +14,8 @@ import {
   RemoveTaskButton,
   ToggleDoneButton,
   TaskContent,
-  ButtonsBar,
-  ButtonsBarItem,
+  TopButtonsPanel,
+  TopButtonsPanelItem,
   TaskDetailsLink
 } from "./styled";
 import { NotFoundMessage } from "../../../../common/NotFoundMessage";
@@ -23,8 +23,9 @@ import { Message } from "./EmptyTasksListMessage/Message";
 import { selectIsSearchTasksEmpty } from "../../tasksSlice";
 import { queryKey } from "../../queryKey";
 import { useQueryParameter } from "../../useQueryParameter";
-import { RootState } from "../../store";
-import { useAppSelector } from "../../../../reduxTypedHooks";
+import { AppDispatch, RootState } from "../../store";
+import { useAppDispatch, useAppSelector } from "../../../../reduxTypedHooks";
+import { ActionCreatorWithPayload, PayloadAction } from "@reduxjs/toolkit";
 
 const TasksList = () => {
   const queryValue = useQueryParameter(queryKey);
@@ -35,20 +36,31 @@ const TasksList = () => {
   const tasksLength = useAppSelector(selectTasksLength);
   const areAllTasksDone = useAppSelector(selectAreAllTasksDone);
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const renderSearchingTasks = () => {
     return (
       searchTasks?.map(({ id, done, content, important }) => {
 
-        const handleToggleImportant = () => dispatch(toggleImportantContent(id));
         const handleToggleDone = () => dispatch(toggleTaskDone(id));
         const handleTaskRemove = () => dispatch(removeTask(id));
 
         const capitalizedContent = content.slice(0, 1).toUpperCase() + content.slice(1);
 
         const renderTopButtonsPanel = () => {
-          const topButtonsPanel = [
+
+          const handleToggleImportant = () => dispatch(toggleImportantContent(id));
+          type TopPanelButtonsActions = ReturnType<typeof handleToggleImportant>
+
+          interface TopPanelButton {
+            title: string;
+            disabledCondition: boolean;
+            activatedCondition: boolean;
+            actionHandler: () => TopPanelButtonsActions;
+            content: string;
+          }
+
+          const topButtonsPanel: TopPanelButton[] = [
             {
               title: "Ustaw, jako ważne",
               disabledCondition: done,
@@ -59,19 +71,21 @@ const TasksList = () => {
           ];
 
           return (
-            <ButtonsBar>
-              {topButtonsPanel.map(({ title, disabledCondition, activatedCondition, actionHandler, content }, index) => (
-                <ButtonsBarItem
-                  key={index}
-                  title={title}
-                  disabled={disabledCondition}
-                  $activated={activatedCondition}
-                  onClick={actionHandler}
-                >
-                  {content}
-                </ButtonsBarItem>
-              ))}
-            </ButtonsBar>
+            <TopButtonsPanel>
+              {
+                topButtonsPanel.map(({ title, disabledCondition, activatedCondition, actionHandler, content }, index) => (
+                  <TopButtonsPanelItem
+                    key={index}
+                    title={title}
+                    disabled={disabledCondition}
+                    $activated={activatedCondition}
+                    onClick={actionHandler}
+                  >
+                    {content}
+                  </TopButtonsPanelItem>
+                ))
+              }
+            </TopButtonsPanel>
           );
         };
 
