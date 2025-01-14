@@ -1,11 +1,5 @@
 import styled from "styled-components";
 
-export const Content = styled.section`
-    @media (max-width:${({ theme }) => theme.breakPoints.mobileL}px) {
-        margin: auto;
-        width: min-content;
-    };
-`;
 
 export const ItemsWrapper = styled.section`
     border-left: 2px solid black;
