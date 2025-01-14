@@ -60,7 +60,7 @@ export const Item = styled.li`
   transition: background 0.3s, padding 0.3s, font-size 0.3s;
 
   @media (max-width: ${({ theme }) => theme.breakPoints.mobileM}px) {
-    grid-template-columns: 40px 1fr 40px;
+    grid-template-columns: 40px auto 40px;
   };
 `;
 
@@ -109,6 +109,10 @@ export const Content = styled.p<ContentProps>`
     background-color: #80808029;
   };
 
+  @media (max-width: ${({ theme }) => theme.breakPoints.mobileM}px) {
+    margin: 8px 11px;
+  };
+
   ${({ $donedItem }) =>
     $donedItem &&
     css`
@@ -129,7 +133,7 @@ export const Content = styled.p<ContentProps>`
     `};
 `;
 
-export const StyledLink = styled(Link)`
+export const TaskDetailsLink = styled(Link)`
   color: black;
   text-decoration: none;
   transition: 0.5s;
