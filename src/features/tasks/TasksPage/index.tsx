@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Form from "./Form";
 import Section from "../../../common/Section";
 import { HeaderPanel2 } from "../../../common/HeaderPanel";
@@ -6,50 +5,11 @@ import Stats from "./Stats";
 import TasksList from "./TasksList"
 import { Search } from "../Search";
 import { PageTitle } from "../../../common/PageTitle";
-import { useAppDispatch } from "../../../reduxTypedHooks";
-import { downloadExampleTasks } from "../tasksSlice";
 import { useTasksListButtonsRenderData } from "./hooks/useTasksListButtonsRenderData";
+import { useFormButtonsRenderData } from "./hooks/useFormButtonsRenderData";
 
 export function TasksPage() {
   const titleOfTasksContent = "Lista zadań";
-
-  const useFormButtonsRenderData = () => {
-    const dispatch = useAppDispatch();
-    const exampleTasksDownloadStatuses = {
-      idle: "idle",
-      loading: "loading",
-    } as const;
-
-    type ExampleTasksDownloadStatus = keyof typeof exampleTasksDownloadStatuses;
-
-    const [exampleTasksDownloadStatus, setExampleTasksDwonloadStatus] = useState<ExampleTasksDownloadStatus>(exampleTasksDownloadStatuses.idle);
-    const areTasksDownloading = exampleTasksDownloadStatus === exampleTasksDownloadStatuses.loading;
-
-    const onExampleTasksDownload = () => {
-      setExampleTasksDwonloadStatus(exampleTasksDownloadStatuses.loading);
-
-      setTimeout(() => {
-        dispatch(downloadExampleTasks());
-        setExampleTasksDwonloadStatus(exampleTasksDownloadStatuses.idle);
-      }, 1000);
-    };
-
-    const buttonContent = (
-      areTasksDownloading ?
-        <>Ładowanie...</> :
-        <>Pobierz przykładowe zadania</>
-    );
-
-    const formButtonsRenderData = [
-      {
-        clickEventHandler: onExampleTasksDownload,
-        disabledCondition: areTasksDownloading,
-        content: buttonContent
-      },
-    ];
-
-    return formButtonsRenderData;
-  };
 
   const formButtonsRenderData = useFormButtonsRenderData();
   const tasksListButtonsRenderData = useTasksListButtonsRenderData();
