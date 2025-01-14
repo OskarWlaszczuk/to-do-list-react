@@ -8,7 +8,7 @@ export const ItemsWrapper = styled.section`
 export const Item = styled.p`
    padding-left: 20px;
    margin: 10px 0;
-   text-wrap: nowrap;
+   word-break: break-word;
 
     @media (max-width: ${({ theme }) => theme.breakPoints.mobileL}px){ 
         padding-left: 10px;
