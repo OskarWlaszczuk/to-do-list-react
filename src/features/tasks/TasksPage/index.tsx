@@ -13,41 +13,45 @@ import { useTasksListButtonsRenderData } from "./hooks/useTasksListButtonsRender
 export function TasksPage() {
   const titleOfTasksContent = "Lista zadań";
 
-  const dispatch = useAppDispatch();
-  const exampleTasksDownloadStatuses = {
-    idle: "idle",
-    loading: "loading",
-  } as const;
+  const useFormButtonsRenderData = () => {
+    const dispatch = useAppDispatch();
+    const exampleTasksDownloadStatuses = {
+      idle: "idle",
+      loading: "loading",
+    } as const;
 
-  type ExampleTasksDownloadStatus = keyof typeof exampleTasksDownloadStatuses;
+    type ExampleTasksDownloadStatus = keyof typeof exampleTasksDownloadStatuses;
 
-  const [exampleTasksDownloadStatus, setExampleTasksDwonloadStatus] = useState<ExampleTasksDownloadStatus>(exampleTasksDownloadStatuses.idle);
-  const areTasksDownloading = exampleTasksDownloadStatus === exampleTasksDownloadStatuses.loading;
+    const [exampleTasksDownloadStatus, setExampleTasksDwonloadStatus] = useState<ExampleTasksDownloadStatus>(exampleTasksDownloadStatuses.idle);
+    const areTasksDownloading = exampleTasksDownloadStatus === exampleTasksDownloadStatuses.loading;
 
-  const onExampleTasksDownload = () => {
-    setExampleTasksDwonloadStatus(exampleTasksDownloadStatuses.loading);
+    const onExampleTasksDownload = () => {
+      setExampleTasksDwonloadStatus(exampleTasksDownloadStatuses.loading);
 
-    setTimeout(() => {
-      dispatch(downloadExampleTasks());
-      setExampleTasksDwonloadStatus(exampleTasksDownloadStatuses.idle);
-    }, 1000);
+      setTimeout(() => {
+        dispatch(downloadExampleTasks());
+        setExampleTasksDwonloadStatus(exampleTasksDownloadStatuses.idle);
+      }, 1000);
+    };
+
+    const buttonContent = (
+      areTasksDownloading ?
+        <>Ładowanie...</> :
+        <>Pobierz przykładowe zadania</>
+    );
+
+    const formButtonsRenderData = [
+      {
+        clickEventHandler: onExampleTasksDownload,
+        disabledCondition: areTasksDownloading,
+        content: buttonContent
+      },
+    ];
+
+    return formButtonsRenderData;
   };
 
-  const buttonContent = (
-    areTasksDownloading ?
-      <>Ładowanie...</> :
-      <>Pobierz przykładowe zadania</>
-  );
-
-  const formButtonsRenderData = [
-    {
-      clickEventHandler: onExampleTasksDownload,
-      disabledCondition: areTasksDownloading,
-      content: buttonContent
-    },
-  ];
-
-
+  const formButtonsRenderData = useFormButtonsRenderData();
   const tasksListButtonsRenderData = useTasksListButtonsRenderData();
 
   return (
