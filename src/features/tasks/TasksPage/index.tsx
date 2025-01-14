@@ -1,35 +1,38 @@
 import React, { useState } from "react";
 import Form from "./Form";
 import Section from "../../../common/Section";
-import { HeaderPanel } from "../../../common/HeaderPanel";
+import { HeaderPanel, HeaderPanel2 } from "../../../common/HeaderPanel";
 import Stats from "./Stats";
 import TasksList from "./TasksList"
 import { Search } from "../Search";
-import {Buttons} from "./Buttons";
+// import { ButtonsManagingTasks } from "./Buttons";
 import { PageTitle } from "../../../common/PageTitle";
 import { Button } from "./Buttons/styled";
-import { useAppDispatch } from "../../../reduxTypedHooks";
-import { downloadExampleTasks } from "../tasksSlice";
+import { useAppDispatch, useAppSelector } from "../../../reduxTypedHooks";
+import { downloadExampleTasks, selectAreAllTasksDone, selectAreSomeTasksDone, selectHideDoneTasks, selectIsSearchTasksEmpty, toggleAllTaskDone, toggleHideDoneTasks, toggleTaskDone } from "../tasksSlice";
+import { RootState } from "../store";
+import { useQueryParameter } from "../useQueryParameter";
+import { queryKey } from "../queryKey";
 
 export function TasksPage() {
   const titleOfTasksContent = "Lista zadań";
 
-  const tasksDownloadStatuses = {
+  const exampleTasksDownloadStatuses = {
     idle: "idle",
     loading: "loading",
   } as const;
 
-  type ExampleTasksDownloadStatus = keyof typeof tasksDownloadStatuses;
+  type ExampleTasksDownloadStatus = keyof typeof exampleTasksDownloadStatuses;
 
-  const [exampleTasksStatus, setExampleTasksStatus] = useState<ExampleTasksDownloadStatus>(tasksDownloadStatuses.idle);
-  const areTasksDownloading = exampleTasksStatus === tasksDownloadStatuses.loading;
+  const [exampleTasksDownloadStatus, setExampleTasksDwonloadStatus] = useState<ExampleTasksDownloadStatus>(exampleTasksDownloadStatuses.idle);
+  const areTasksDownloading = exampleTasksDownloadStatus === exampleTasksDownloadStatuses.loading;
 
   const onExampleTasksDownload = () => {
-    setExampleTasksStatus(tasksDownloadStatuses.loading);
+    setExampleTasksDwonloadStatus(exampleTasksDownloadStatuses.loading);
 
     setTimeout(() => {
       dispatch(downloadExampleTasks());
-      setExampleTasksStatus(tasksDownloadStatuses.idle);
+      setExampleTasksDwonloadStatus(exampleTasksDownloadStatuses.idle);
     }, 1000);
   };
 
@@ -41,28 +44,88 @@ export function TasksPage() {
 
   const dispatch = useAppDispatch();
 
+  const formButtonsRenderData = [
+    {
+      clickEventHandler: onExampleTasksDownload,
+      disabledCondition: areTasksDownloading,
+      content: buttonContent
+    },
+  ];
+
+
+
+  // const tasksManagementButtonsRenderData = [
+  //   {
+  //     clickEventHandler: () => dispatch(toggleHideDoneTasks()),
+  //     disabledCondition: isSearchTasksEmpty || !areSomeDone,
+  //     content: <>{hideDoneTasks && areSomeDone ? "Pokaż" : "Ukryj"} ukończone</>
+  //   },
+  //   {
+  //     clickEventHandler: () => dispatch(toggleAllTaskDone()),
+  //     disabledCondition: areAllDone || isSearchTasksEmpty,
+  //     content: areAllDone ? "Ukończono" : "Ukończ wszystkie",
+  //   },
+  // ];
+
+  const useTasksManagementButtonsRenderData = () => {
+
+    const hideDoneTasks = useAppSelector(selectHideDoneTasks);
+
+    const areAllDone = useAppSelector(selectAreAllTasksDone);
+    const areSomeDone = useAppSelector(selectAreSomeTasksDone);
+    const query = useQueryParameter(queryKey);
+
+    const isSearchTasksEmpty = useAppSelector((state: RootState) => selectIsSearchTasksEmpty(state, query!));
+
+    const tasksManagementButtonsRenderData = [
+      {
+        clickEventHandler: () => dispatch(toggleHideDoneTasks()),
+        disabledCondition: isSearchTasksEmpty || !areSomeDone,
+        content: <>{hideDoneTasks && areSomeDone ? "Pokaż" : "Ukryj"} ukończone</>
+      },
+      {
+        clickEventHandler: () => dispatch(toggleAllTaskDone()),
+        disabledCondition: areAllDone || isSearchTasksEmpty,
+        content: areAllDone ? "Ukończono" : "Ukończ wszystkie",
+      },
+    ];
+
+    return tasksManagementButtonsRenderData;
+  };
+  const tasksManagementButtonsRenderData = useTasksManagementButtonsRenderData();
+
   return (
     <>
       <PageTitle content={titleOfTasksContent} />
       <Section
         title={
-          <HeaderPanel
+          <HeaderPanel2
             title="Dodaj nowe zadanie"
-            sideContent={
-              <Button
-                type="button"
-                disabled={areTasksDownloading}
-                onClick={onExampleTasksDownload}
-              >
-                {buttonContent}
-              </Button>
-            }
+            buttonsRenderData={formButtonsRenderData}
           />
+          // <HeaderPanel
+          //   title="Dodaj nowe zadanie"
+          //   sideContent={
+          //     <Button
+          //       type="button"
+          //       disabled={areTasksDownloading}
+          //       onClick={onExampleTasksDownload}
+          //     >
+          //       {buttonContent}
+          //     </Button>
+          //   }
+          // />
         }
         body={<Form />}
       />
       <Section
-        title={<HeaderPanel title={titleOfTasksContent} sideContent={<Buttons />} />}
+        title={
+          <HeaderPanel2
+            title={titleOfTasksContent}
+            buttonsRenderData={tasksManagementButtonsRenderData}
+          />
+          // <HeaderPanel title={titleOfTasksContent} sideContent={<ButtonsManagingTasks />}
+        }
         body={
           <>
             <Stats />
