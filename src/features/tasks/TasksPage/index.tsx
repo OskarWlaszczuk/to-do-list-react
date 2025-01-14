@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Form from "./Form";
 import Section from "../../../common/Section";
 import { HeaderPanel2 } from "../../../common/HeaderPanel";
@@ -6,24 +6,14 @@ import Stats from "./Stats";
 import TasksList from "./TasksList"
 import { Search } from "../Search";
 import { PageTitle } from "../../../common/PageTitle";
-import { useAppDispatch, useAppSelector } from "../../../reduxTypedHooks";
-import {
-  downloadExampleTasks,
-  selectAreAllTasksDone,
-  selectAreSomeTasksDone,
-  selectHideDoneTasks,
-  selectIsSearchTasksEmpty,
-  toggleAllTaskDone,
-  toggleHideDoneTasks,
-  toggleTaskDone
-} from "../tasksSlice";
-import { RootState } from "../store";
-import { useQueryParameter } from "../useQueryParameter";
-import { queryKey } from "../queryKey";
+import { useAppDispatch } from "../../../reduxTypedHooks";
+import { downloadExampleTasks } from "../tasksSlice";
+import { useTasksListButtonsRenderData } from "./hooks/useTasksListButtonsRenderData";
 
 export function TasksPage() {
   const titleOfTasksContent = "Lista zadań";
 
+  const dispatch = useAppDispatch();
   const exampleTasksDownloadStatuses = {
     idle: "idle",
     loading: "loading",
@@ -49,8 +39,6 @@ export function TasksPage() {
       <>Pobierz przykładowe zadania</>
   );
 
-  const dispatch = useAppDispatch();
-
   const formButtonsRenderData = [
     {
       clickEventHandler: onExampleTasksDownload,
@@ -59,31 +47,7 @@ export function TasksPage() {
     },
   ];
 
-  const useTasksListButtonsRenderData = () => {
 
-    const hideDoneTasks = useAppSelector(selectHideDoneTasks);
-
-    const areAllDone = useAppSelector(selectAreAllTasksDone);
-    const areSomeDone = useAppSelector(selectAreSomeTasksDone);
-    const query = useQueryParameter(queryKey);
-
-    const isSearchTasksEmpty = useAppSelector((state: RootState) => selectIsSearchTasksEmpty(state, query!));
-
-    const tasksListButtonsRenderData = [
-      {
-        clickEventHandler: () => dispatch(toggleHideDoneTasks()),
-        disabledCondition: isSearchTasksEmpty || !areSomeDone,
-        content: <>{hideDoneTasks && areSomeDone ? "Pokaż" : "Ukryj"} ukończone</>
-      },
-      {
-        clickEventHandler: () => dispatch(toggleAllTaskDone()),
-        disabledCondition: areAllDone || isSearchTasksEmpty,
-        content: areAllDone ? "Ukończono" : "Ukończ wszystkie",
-      },
-    ];
-
-    return tasksListButtonsRenderData;
-  };
   const tasksListButtonsRenderData = useTasksListButtonsRenderData();
 
   return (
