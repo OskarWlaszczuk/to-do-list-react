@@ -1,15 +1,22 @@
 import React, { useState } from "react";
 import Form from "./Form";
 import Section from "../../../common/Section";
-import { HeaderPanel, HeaderPanel2 } from "../../../common/HeaderPanel";
+import { HeaderPanel2 } from "../../../common/HeaderPanel";
 import Stats from "./Stats";
 import TasksList from "./TasksList"
 import { Search } from "../Search";
-// import { ButtonsManagingTasks } from "./Buttons";
 import { PageTitle } from "../../../common/PageTitle";
-import { Button } from "./Buttons/styled";
 import { useAppDispatch, useAppSelector } from "../../../reduxTypedHooks";
-import { downloadExampleTasks, selectAreAllTasksDone, selectAreSomeTasksDone, selectHideDoneTasks, selectIsSearchTasksEmpty, toggleAllTaskDone, toggleHideDoneTasks, toggleTaskDone } from "../tasksSlice";
+import {
+  downloadExampleTasks,
+  selectAreAllTasksDone,
+  selectAreSomeTasksDone,
+  selectHideDoneTasks,
+  selectIsSearchTasksEmpty,
+  toggleAllTaskDone,
+  toggleHideDoneTasks,
+  toggleTaskDone
+} from "../tasksSlice";
 import { RootState } from "../store";
 import { useQueryParameter } from "../useQueryParameter";
 import { queryKey } from "../queryKey";
@@ -51,21 +58,6 @@ export function TasksPage() {
       content: buttonContent
     },
   ];
-
-
-
-  // const tasksManagementButtonsRenderData = [
-  //   {
-  //     clickEventHandler: () => dispatch(toggleHideDoneTasks()),
-  //     disabledCondition: isSearchTasksEmpty || !areSomeDone,
-  //     content: <>{hideDoneTasks && areSomeDone ? "Pokaż" : "Ukryj"} ukończone</>
-  //   },
-  //   {
-  //     clickEventHandler: () => dispatch(toggleAllTaskDone()),
-  //     disabledCondition: areAllDone || isSearchTasksEmpty,
-  //     content: areAllDone ? "Ukończono" : "Ukończ wszystkie",
-  //   },
-  // ];
 
   const useTasksListButtonsRenderData = () => {
 
