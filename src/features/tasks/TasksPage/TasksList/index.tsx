@@ -10,10 +10,10 @@ import {
 } from "../../tasksSlice";
 import {
   List,
-  Item,
-  Button,
+  TaskItem,
+  RemoveTaskButton,
   ToggleDoneButton,
-  Content,
+  TaskContent,
   ButtonsBar,
   ButtonsBarItem,
   TaskDetailsLink
@@ -76,23 +76,23 @@ const TasksList = () => {
         };
 
         return (!hideDoneTasks || (hideDoneTasks && !done)) && (
-          <Item key={id}>
+          <TaskItem key={id}>
             {renderTopButtonsPanel()}
             <ToggleDoneButton onClick={handleToggleDone}>{done ? "✔" : ""}</ToggleDoneButton>
             <TaskDetailsLink
               title="Wejdź w szczegóły zadania"
               to={`/tasks/${id}`}
             >
-              <Content
+              <TaskContent
                 $justified={content.length > 160 ? true : false}
                 $important={important && !done}
                 $donedItem={done}
               >
                 {capitalizedContent}
-              </Content>
+              </TaskContent>
             </TaskDetailsLink>
-            <Button onClick={handleTaskRemove}>🗑️</Button>
-          </Item>
+            <RemoveTaskButton onClick={handleTaskRemove}>🗑️</RemoveTaskButton>
+          </TaskItem>
         )
       })
     );
