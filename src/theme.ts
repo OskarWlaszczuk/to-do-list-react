@@ -2,6 +2,8 @@ export const theme = {
   colors: {
     teal: "#008080",
     nobel: "#b3aeaebd",
+    lightBlack:"#000000ad",
+    white:"#ffffff",
   },
   breakPoints: {
     smallLaptop: 950,
