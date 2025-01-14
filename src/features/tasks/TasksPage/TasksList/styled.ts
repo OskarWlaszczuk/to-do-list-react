@@ -51,7 +51,7 @@ export const ButtonsBarItem = styled.button<ButtonsBarItemProps>`
   `}
 `;
 
-export const Item = styled.li`
+export const TaskItem = styled.li`
   display: grid;
   grid-template-rows: repeat(2, auto);
   grid-template-columns: 45px 1fr 45px;
@@ -64,7 +64,7 @@ export const Item = styled.li`
   };
 `;
 
-export const Button = styled.button`
+export const RemoveTaskButton = styled.button`
   border: none;
   color: white;
   padding: 10px;
@@ -84,7 +84,7 @@ export const Button = styled.button`
   };
 `;
 
-export const ToggleDoneButton = styled(Button)`
+export const ToggleDoneButton = styled(RemoveTaskButton)`
   background: green;
   border: none;
 
@@ -98,7 +98,7 @@ export const ToggleDoneButton = styled(Button)`
   };
 `;
 
-export const Content = styled.p<ContentProps>`
+export const TaskContent = styled.p<ContentProps>`
   text-align: center;
   transition:0.5s;
   padding: 10px;
