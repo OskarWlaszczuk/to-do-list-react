@@ -15,7 +15,7 @@ export const List = styled.ul`
   padding: 0px;
 `;
 
-export const ButtonsBar = styled.div`
+export const TopButtonsPanel = styled.div`
   text-align: center;
   justify-content: center;
   grid-column: 1 / -1;
@@ -24,7 +24,7 @@ export const ButtonsBar = styled.div`
   grid-gap: 5px;
 `;
 
-export const ButtonsBarItem = styled.button<ButtonsBarItemProps>`
+export const TopButtonsPanelItem = styled.button<ButtonsBarItemProps>`
   font-weight: bold;
   font-size:larger;
   border:none;

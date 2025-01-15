@@ -16,7 +16,7 @@ import { RootState } from "../../store";
 import { useAppSelector } from "../../../../reduxTypedHooks";
 import { useRenderSearchingTasks } from "../hooks/useRenderSearchingTasks";
 
-const TasksList = () => {
+const ListContent = () => {
   const queryValue = useQueryParameter(queryKey);
   const renderSearchingTasks = useRenderSearchingTasks();
 
@@ -38,4 +38,4 @@ const TasksList = () => {
   );
 };
 
-export default TasksList;
+export default ListContent;
