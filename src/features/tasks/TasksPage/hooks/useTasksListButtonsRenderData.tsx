@@ -24,7 +24,7 @@ export const useTasksListButtonsRenderData = () => {
   const tasksListButtonsRenderData: ButtonRenderData[] = [
     {
       clickEventHandler: () => dispatch(toggleHideDoneTasks()),
-      disabledCondition: isSearchTasksEmpty || !areSomeDone,
+      disabledCondition: !areSomeDone,
       content: <>
         {hideDoneTasks && areSomeDone ? "Pokaż" : "Ukryj"} ukończone
       </>
