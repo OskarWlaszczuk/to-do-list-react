@@ -4,7 +4,15 @@ import { queryKey } from "../../queryKey";
 import { RootState } from "../../store";
 import { removeTask, selectHideDoneTasks, selectTaskByQuery, toggleImportantContent, toggleTaskDone } from "../../tasksSlice";
 import { useQueryParameter } from "../../useQueryParameter";
-import { RemoveTaskButton, TaskContent, TaskDetailsLink, TaskItem, ToggleDoneButton, TopButtonsPanel, TopButtonsPanelItem } from "../TasksList/styled";
+import {
+    RemoveTaskButton,
+    TaskContent,
+    TaskDetailsLink,
+    TaskItem,
+    ToggleDoneButton,
+    TopButtonsPanel,
+    TopButtonsPanelItem
+} from "../ListContent/styled";
 
 const useRenderTopButtonsPanel = () => {
     const dispatch = useAppDispatch();
@@ -13,7 +21,6 @@ const useRenderTopButtonsPanel = () => {
         const handleToggleImportant = () => dispatch(toggleImportantContent(id));
 
         type TopPanelButtonsActions = ReturnType<typeof handleToggleImportant>
-
         interface TopPanelButton {
             title: string;
             disabledCondition: boolean;
@@ -53,6 +60,7 @@ const useRenderTopButtonsPanel = () => {
 
     return renderTopButtonPanel;
 };
+
 
 export const useRenderSearchingTasks = () => {
     const dispatch = useAppDispatch();
