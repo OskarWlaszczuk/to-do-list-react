@@ -1,25 +1,26 @@
 import { FormEventHandler, useRef, useState } from "react";
-import { useDispatch } from "react-redux";
 import { addTask } from "../../tasksSlice";
 import { nanoid } from "@reduxjs/toolkit";
 import { Container, SubmitButton } from "./styled";
 import { Input } from "../../../../common/Input";
 import { TaskData } from "../../../../common/aliases/interfaces/TaskData";
+import { useAppDispatch } from "../../../../reduxTypedHooks";
 
 const Form = () => {
     const [newTaskContent, setNewTaskContent] = useState<TaskData["content"]>("Zagrać w Wiedźmina");
 
     const inputRef = useRef<HTMLInputElement>(null);
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     const onFormSubmit: FormEventHandler<HTMLFormElement> = (event) => {
-        const focusOnInput = () => inputRef.current!.focus();
+        const addFocusOnInput = () => inputRef.current!.focus();
 
         event.preventDefault();
-        focusOnInput();
+        addFocusOnInput();
         setNewTaskContent("");
 
         const newTaskContentTrimmed = newTaskContent.trim();
+
         newTaskContentTrimmed && (
             dispatch(addTask({
                 content: newTaskContentTrimmed,
@@ -34,7 +35,7 @@ const Form = () => {
         target: HTMLInputElement;
     }
 
-    const onInputChange = ({ target }: InputElement) => setNewTaskContent(newTaskContent => newTaskContent = target.value);
+    const onInputChange = ({ target }: InputElement) => setNewTaskContent(target.value);
 
     return (
         <form onSubmit={onFormSubmit}>
@@ -45,7 +46,7 @@ const Form = () => {
                     onChange={onInputChange}
                     required
                     autoFocus
-                    placeholder="Co jest do zrobienia"
+                    placeholder="Co jest do zrobienia?"
                     type="text"
                     name="newTask"
                 />
