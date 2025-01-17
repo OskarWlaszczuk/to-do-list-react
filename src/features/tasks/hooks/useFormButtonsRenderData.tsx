@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { useAppDispatch } from "../../../../reduxTypedHooks";
-import { downloadExampleTasks } from "../../tasksSlice";
+import { useAppDispatch } from "../../../common/hooks/reduxTypedHooks";
+import { downloadExampleTasks } from "../slices/tasksSlice";
 import { ButtonRenderData } from "../interfaces/ButtonRenderData";
 
 export const useFormButtonsRenderData = () => {

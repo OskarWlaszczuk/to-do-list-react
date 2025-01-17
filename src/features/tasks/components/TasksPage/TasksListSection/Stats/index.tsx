@@ -1,7 +1,7 @@
 import { ItemsWrapper, Item } from "./styled";
-import { selectIsTasksListEmpty, selectTasksLength, selectImportantTasksLength, selectDoneTasksLength } from "../../tasksSlice";
-import { SectionHeader } from "../../../../common/SectionHeader";
-import { useAppSelector } from "../../../../reduxTypedHooks";
+import { selectIsTasksListEmpty, selectTasksLength, selectImportantTasksLength, selectDoneTasksLength } from "../../../../slices/tasksSlice";
+import { SectionHeader } from "../../../../../../common/components/SectionHeader";
+import { useAppSelector } from "../../../../../../common/hooks/reduxTypedHooks";
 
 const Stats = () => {
     const isTasksEmpty = useAppSelector(selectIsTasksListEmpty);

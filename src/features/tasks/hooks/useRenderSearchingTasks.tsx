@@ -1,9 +1,9 @@
-import { TaskData } from "../../../../common/aliases/interfaces/TaskData";
-import { useAppDispatch, useAppSelector } from "../../../../reduxTypedHooks";
-import { queryKey } from "../../queryKey";
-import { RootState } from "../../store";
-import { removeTask, selectHideDoneTasks, selectTaskByQuery, toggleImportantContent, toggleTaskDone } from "../../tasksSlice";
-import { useQueryParameter } from "../../useQueryParameter";
+import { TaskData } from "../../../common/aliases/interfaces/TaskData";
+import { useAppDispatch, useAppSelector } from "../../../common/hooks/reduxTypedHooks";
+import { queryKey } from "../../../common/constants/queryKey";
+import { RootState } from "../../../core/store";
+import { removeTask, selectHideDoneTasks, selectTaskByQuery, toggleImportantContent, toggleTaskDone } from "../slices/tasksSlice";
+import { useQueryParameter } from "./useQueryParameter";
 import {
     RemoveTaskButton,
     TaskContent,
@@ -12,7 +12,7 @@ import {
     ToggleDoneButton,
     TopButtonsPanel,
     TopButtonsPanelItem
-} from "../ListContent/styled";
+} from "../components/TasksPage/TasksListSection/ListContent/styled";
 
 const useRenderTopButtonsPanel = () => {
     const dispatch = useAppDispatch();
