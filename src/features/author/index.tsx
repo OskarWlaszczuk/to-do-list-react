@@ -1,8 +1,8 @@
-import Section from "../../common/Section";
-import { PageTitle } from "../../common/PageTitle";
+import Section from "../../common/components/Section";
+import { PageTitle } from "../../common/components/PageTitle";
 import { Image } from "./styled";
-import { CenteredParagraph } from "../../common/CenteredParagraph";
-import { SectionHeader } from "../../common/SectionHeader";
+import { CenteredParagraph } from "../../common/components/CenteredParagraph";
+import { SectionHeader } from "../../common/components/SectionHeader";
 
 export const AuthorPage = () => (
     <>

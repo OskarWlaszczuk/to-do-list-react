@@ -1,15 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { App } from './features/tasks/App';
+import { App } from './core/App/index';
 import reportWebVitals from './reportWebVitals';
-import { GlobalStyles } from './GlobileStyles';
+import { GlobalStyles } from './core/GlobileStyles';
 import { ThemeProvider } from 'styled-components';
-import { theme } from './theme';
-import {store} from './features/tasks/store';
+import { theme } from './core/theme';
+import { store } from './core/store';
 import { Provider } from 'react-redux';
 //Dodać wszędzie export/import {named}
 
-const root = ReactDOM.createRoot(document.getElementById('root')!);
+const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
