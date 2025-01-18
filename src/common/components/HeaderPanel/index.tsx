@@ -1,6 +1,6 @@
 import { Button, ButtonsContainer, Panel } from "./styled";
 import { SectionHeader } from "../SectionHeader";
-import { ButtonRenderData } from "../../../features/tasks/interfaces/ButtonRenderData";
+import { ButtonRenderData } from "../../aliases/interfaces/ButtonRenderData";
 
 interface HeaderPanelProps2 {
     title: string;

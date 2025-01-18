@@ -9,8 +9,8 @@ import {
   toggleAllTaskDone,
   toggleHideDoneTasks
 } from "../slices/tasksSlice";
-import { useQueryParameter } from "./useQueryParameter";
-import { ButtonRenderData } from "../interfaces/ButtonRenderData";
+import { useQueryParameter } from "../../../common/hooks/useQueryParameter";
+import { ButtonRenderData } from "../../../common/aliases/interfaces/ButtonRenderData";
 
 export const useTasksListButtonsRenderData = () => {
   const dispatch = useAppDispatch();
