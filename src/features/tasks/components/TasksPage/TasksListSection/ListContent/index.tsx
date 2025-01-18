@@ -11,7 +11,7 @@ import { NotFoundMessage } from "../../../../../../common/components/NotFoundMes
 import { Message } from "../../../../../../common/components/Message";
 import { selectIsSearchTasksEmpty } from "../../../../slices/tasksSlice";
 import { queryKey } from "../../../../../../common/constants/queryKey";
-import { useQueryParameter } from "../../../../hooks/useQueryParameter";
+import { useQueryParameter } from "../../../../../../common/hooks/useQueryParameter";
 import { RootState } from "../../../../../../core/store";
 import { useAppSelector } from "../../../../../../common/hooks/reduxTypedHooks";
 import { useRenderSearchingTasks } from "../../../../hooks/useRenderSearchingTasks";

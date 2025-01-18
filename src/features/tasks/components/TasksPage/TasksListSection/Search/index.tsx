@@ -1,5 +1,5 @@
 import { queryKey } from "../../../../../../common/constants/queryKey"
-import { useQueryParameter } from "../../../../hooks/useQueryParameter"
+import { useQueryParameter } from "../../../../../../common/hooks/useQueryParameter"
 import { useReplaceQueryParameter } from "../../../../hooks/useReplaceQueryParameter"
 import { Img, Wrapper } from "./styled"
 import { Input } from "../../../../../../common/components/Input"

@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import { QueryKey } from "../../../common/aliases/types/QueryKey";
+import { QueryKey } from "../aliases/types/QueryKey";
 
 export const useQueryParameter = (queryKey:QueryKey) => {
     const location = useLocation();

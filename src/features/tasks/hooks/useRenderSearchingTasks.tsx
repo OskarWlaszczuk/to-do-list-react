@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from "../../../common/hooks/reduxTyped
 import { queryKey } from "../../../common/constants/queryKey";
 import { RootState } from "../../../core/store";
 import { removeTask, selectHideDoneTasks, selectTaskByQuery, toggleImportantContent, toggleTaskDone } from "../slices/tasksSlice";
-import { useQueryParameter } from "./useQueryParameter";
+import { useQueryParameter } from "../../../common/hooks/useQueryParameter";
 import {
     RemoveTaskButton,
     TaskContent,

@@ -20,5 +20,5 @@ export const FormSection = () => {
                 body={<Form />}
             />
         </>
-    )
-}
+    );
+};
