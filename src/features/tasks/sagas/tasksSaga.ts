@@ -1,7 +1,7 @@
 import { call, CallEffect, put, PutEffect, select, SelectEffect, takeEvery, takeLatest, Effect } from "redux-saga/effects";
 import { downloadExampleTasks, selectTasks, setTasks } from "../slices/tasksSlice";
 import { getExampleTasksJson } from "../functions/getExampleTasksJson";
-import { saveTasksInLocaleStorage } from "../functions/tasksLocaleStorage";
+import { saveTasksInLocaleStorage } from "../../../common/functions/tasksLocaleStorage";
 import { tasksListKey } from "../../../common/constants/tasksListKey";
 import { TaskData } from "../../../common/aliases/interfaces/TaskData";
 

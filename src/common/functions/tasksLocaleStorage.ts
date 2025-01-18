@@ -1,5 +1,5 @@
-import { TaskData } from "../../../common/aliases/interfaces/TaskData";
-import { tasksListKey } from "../../../common/constants/tasksListKey";
+import { TaskData } from "../aliases/interfaces/TaskData";
+import { tasksListKey } from "../constants/tasksListKey";
 
 type TasksListKey = typeof tasksListKey;
 
