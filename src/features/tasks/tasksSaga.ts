@@ -1,9 +1,10 @@
 import { call, CallEffect, put, PutEffect, select, SelectEffect, takeEvery, takeLatest, Effect } from "redux-saga/effects";
-import { downloadExampleTasks, selectTasks, setTasks } from "../slices/tasksSlice";
-import { getExampleTasksJson } from "../functions/getExampleTasksJson";
-import { saveTasksInLocaleStorage } from "../../../common/functions/tasksLocaleStorage";
-import { tasksListKey } from "../../../common/constants/tasksListKey";
-import { TaskData } from "../../../common/aliases/interfaces/TaskData";
+import { TaskData } from "../../common/aliases/interfaces/TaskData";
+import { getExampleTasksJson } from "./getExampleTasksJson";
+import { downloadExampleTasks, selectTasks, setTasks } from "./tasksSlice";
+import { tasksListKey } from "../../common/constants/tasksListKey";
+import { saveTasksInLocaleStorage } from "../../common/functions/tasksLocaleStorage";
+
 
 function* downloadExampleTasksHandler(): Generator<
     PutEffect | CallEffect<TaskData[]>,

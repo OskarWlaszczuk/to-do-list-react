@@ -1,9 +1,9 @@
-import { queryKey } from "../../../../../../common/constants/queryKey"
-import { useQueryParameter } from "../../../../../../common/hooks/useQueryParameter"
-import { useReplaceQueryParameter } from "../../../../hooks/useReplaceQueryParameter"
+import { queryKey } from "../../../../../common/constants/queryKey"
+import { useQueryParameter } from "../../../../../common/hooks/useQueryParameter"
+import { useReplaceQueryParameter } from "./useReplaceQueryParameter"
 import { Img, Wrapper } from "./styled"
-import { Input } from "../../../../../../common/components/Input"
-import { selectIsTasksListEmpty } from "../../../../slices/tasksSlice"
+import { Input } from "../../../../../common/components/Input"
+import { selectIsTasksListEmpty } from "../../../tasksSlice"
 import { useSelector } from "react-redux"
 
 export const Search = () => {

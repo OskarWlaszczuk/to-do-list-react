@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom"
-import { selectTaskById } from "../../../features/tasks/slices/tasksSlice";
+import { selectTaskById } from "../../../features/tasks/tasksSlice";
 import Section from "../../../common/components/Section";
 import { PageTitle } from "../../../common/components/PageTitle";
 import { NotFoundMessage } from "../../../common/components/NotFoundMessage";

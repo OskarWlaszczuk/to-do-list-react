@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from "axios"
-import { TaskData } from "../../../common/aliases/interfaces/TaskData";
+import { TaskData } from "../../common/aliases/interfaces/TaskData";
 
 export const getExampleTasksJson = async () => {
     const response: AxiosResponse<TaskData[]> = await axios.get("/to-do-list-react/exampleTasks.json");

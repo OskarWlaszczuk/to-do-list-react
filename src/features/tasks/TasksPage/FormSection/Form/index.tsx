@@ -1,10 +1,10 @@
 import { FormEventHandler, useRef, useState } from "react";
-import { addTask } from "../../../../slices/tasksSlice";
+import { addTask } from "../../../tasksSlice";
 import { nanoid } from "@reduxjs/toolkit";
 import { Container, SubmitButton } from "./styled";
-import { Input } from "../../../../../../common/components/Input";
-import { TaskData } from "../../../../../../common/aliases/interfaces/TaskData";
-import { useAppDispatch } from "../../../../../../common/hooks/reduxTypedHooks";
+import { Input } from "../../../../../common/components/Input";
+import { TaskData } from "../../../../../common/aliases/interfaces/TaskData";
+import { useAppDispatch } from "../../../../../common/hooks/reduxTypedHooks";
 
 const Form = () => {
     const [newTaskContent, setNewTaskContent] = useState<TaskData["content"]>("Zagrać w Wiedźmina");

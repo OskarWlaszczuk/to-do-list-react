@@ -3,18 +3,18 @@ import {
   selectHideDoneTasks,
   selectTasksLength,
   selectAreAllTasksDone,
-} from "../../../../slices/tasksSlice";
+} from "../../../tasksSlice";
 import {
   List,
 } from "./styled";
-import { NotFoundMessage } from "../../../../../../common/components/NotFoundMessage";
-import { Message } from "../../../../../../common/components/Message";
-import { selectIsSearchTasksEmpty } from "../../../../slices/tasksSlice";
-import { queryKey } from "../../../../../../common/constants/queryKey";
-import { useQueryParameter } from "../../../../../../common/hooks/useQueryParameter";
-import { RootState } from "../../../../../../core/store";
-import { useAppSelector } from "../../../../../../common/hooks/reduxTypedHooks";
-import { useRenderSearchingTasks } from "../../../../hooks/useRenderSearchingTasks";
+import { NotFoundMessage } from "../../../../../common/components/NotFoundMessage";
+import { Message } from "../../../../../common/components/Message";
+import { selectIsSearchTasksEmpty } from "../../../tasksSlice";
+import { queryKey } from "../../../../../common/constants/queryKey";
+import { useQueryParameter } from "../../../../../common/hooks/useQueryParameter";
+import { RootState } from "../../../../../core/store";
+import { useAppSelector } from "../../../../../common/hooks/reduxTypedHooks";
+import { useRenderSearchingTasks } from "./useRenderSearchingTasks";
 
 const ListContent = () => {
   const queryValue = useQueryParameter(queryKey);

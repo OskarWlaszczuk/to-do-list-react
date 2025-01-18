@@ -1,6 +1,6 @@
-import { useAppDispatch, useAppSelector } from "../../../common/hooks/reduxTypedHooks";
-import { queryKey } from "../../../common/constants/queryKey";
-import { RootState } from "../../../core/store";
+import { useAppDispatch, useAppSelector } from "../../../../common/hooks/reduxTypedHooks";
+import { queryKey } from "../../../../common/constants/queryKey";
+import { RootState } from "../../../../core/store";
 import {
   selectAreAllTasksDone,
   selectAreSomeTasksDone,
@@ -8,9 +8,9 @@ import {
   selectIsSearchTasksEmpty,
   toggleAllTaskDone,
   toggleHideDoneTasks
-} from "../slices/tasksSlice";
-import { useQueryParameter } from "../../../common/hooks/useQueryParameter";
-import { ButtonRenderData } from "../../../common/aliases/interfaces/ButtonRenderData";
+} from "../../tasksSlice";
+import { useQueryParameter } from "../../../../common/hooks/useQueryParameter";
+import { ButtonRenderData } from "../../../../common/aliases/interfaces/ButtonRenderData";
 
 export const useTasksListButtonsRenderData = () => {
   const dispatch = useAppDispatch();

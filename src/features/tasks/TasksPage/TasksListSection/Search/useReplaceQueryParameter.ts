@@ -1,5 +1,5 @@
 import { useHistory, useLocation } from "react-router-dom";
-import { queryKey } from "../../../common/constants/queryKey";
+import { queryKey } from "../../../../../common/constants/queryKey";
 
 export const useReplaceQueryParameter = () => {
     const history = useHistory();

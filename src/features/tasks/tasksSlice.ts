@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { getInitialTasks } from '../../../common/functions/tasksLocaleStorage';
-import { tasksListKey } from '../../../common/constants/tasksListKey';
-import { TaskData } from '../../../common/aliases/interfaces/TaskData';
-import { RootState } from '../../../core/store';
+import { getInitialTasks } from '../../common/functions/tasksLocaleStorage';
+import { TaskData } from '../../common/aliases/interfaces/TaskData';
+import { tasksListKey } from '../../common/constants/tasksListKey';
+import { RootState } from '../../core/store';
 
 interface TasksState {
     tasks: ReturnType<typeof getInitialTasks>;

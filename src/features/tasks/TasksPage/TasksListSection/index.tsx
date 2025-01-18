@@ -1,7 +1,7 @@
-import { HeaderPanel } from "../../../../../common/components/HeaderPanel"
-import Section from "../../../../../common/components/Section"
+import { HeaderPanel } from "../../../../common/components/HeaderPanel"
+import Section from "../../../../common/components/Section"
 import { Search } from "./Search"
-import { useTasksListButtonsRenderData } from "../../../hooks/useTasksListButtonsRenderData"
+import { useTasksListButtonsRenderData } from "./useTasksListButtonsRenderData"
 import ListContent from "./ListContent"
 import Stats from "./Stats"
 
