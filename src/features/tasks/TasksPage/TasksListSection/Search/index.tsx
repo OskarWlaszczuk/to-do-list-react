@@ -2,7 +2,7 @@ import { QUERY_KEY } from "../../../../../common/constants/QUERY_KEY"
 import { useQueryParameter } from "../../../../../common/hooks/useQueryParameter"
 import { useReplaceQueryParameter } from "./useReplaceQueryParameter"
 import { Img, Wrapper } from "./styled"
-import { Input } from "../../../../../common/components/Input"
+import { SearchInput } from "../../../../../common/components/Input"
 import { selectIsTasksListEmpty } from "../../../tasksSlice"
 import { useSelector } from "react-redux"
 
@@ -24,8 +24,7 @@ export const Search = () => {
                 !isTasksEmpty && (
                     <Wrapper>
                         <Img src="https://cdn-icons-png.flaticon.com/512/1167/1167092.png" alt="img" />
-                        <Input
-                            $searchInput
+                        <SearchInput
                             name="searchTaskField"
                             onChange={onInputChange}
                             value={query || ""}

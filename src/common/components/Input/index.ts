@@ -1,32 +1,28 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
-interface InputProp {
-    $searchInput?: boolean;
-}
-
-export const Input = styled.input<InputProp>`
+export const Input = styled.input`
     padding: 10px;
     border: 2px solid ${({ theme }) => theme.colors.nobel};
     border-radius: 5px;
+`;
 
-    ${({ $searchInput }) => $searchInput && css`
-        transition: 1.5s;
-        transform-origin: left;
-        width: 65%;
+export const SearchInput = styled(Input)`
+    transition: 1.5s;
+    transform-origin: left;
+    width: 65%;
 
-        @media (max-width:${({ theme }) => theme.breakPoints.mobileL}px) {
-            justify-self: center;
-            width: 100%;
+    &:hover {
+        width: 85%;
+        padding-left: 5%;
+    };
 
-            &:hover {
-                width: 56%;
-                padding-left: 0%;
-            };
-        };
+    @media (max-width:${({ theme }) => theme.breakPoints.mobileL}px) {
+        justify-self: center;
+        width: 100%;
 
         &:hover {
-            width: 85%;
-            padding-left: 5%;
+            width: 56%;
+            padding-left: 0%;
         };
-    `};
+    };
 `;
