@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { useAppDispatch } from "../../../../common/hooks/reduxTypedHooks";
-import { downloadExampleTasks } from "../../tasksSlice";
+import { useAppDispatch, useAppSelector } from "../../../../common/hooks/reduxTypedHooks";
+import { downloadExampleTasks, selectAreExampleTasksPresent } from "../../tasksSlice";
 import { ButtonRenderData } from "../../../../common/aliases/interfaces/ButtonRenderData";
 
 export const useFormButtonsRenderData = () => {
   const dispatch = useAppDispatch();
+  const areExampletasksPresent = useAppSelector(selectAreExampleTasksPresent);
 
   const exampleTasksDownloadStatuses = {
     idle: "idle",
@@ -13,7 +14,9 @@ export const useFormButtonsRenderData = () => {
 
   type ExampleTasksDownloadStatus = keyof typeof exampleTasksDownloadStatuses;
 
-  const [exampleTasksDownloadStatus, setExampleTasksDwonloadStatus] = useState<ExampleTasksDownloadStatus>(exampleTasksDownloadStatuses.idle);
+  const [exampleTasksDownloadStatus, setExampleTasksDwonloadStatus] = useState<ExampleTasksDownloadStatus>(
+    exampleTasksDownloadStatuses.idle
+  );
   const areTasksDownloading = exampleTasksDownloadStatus === exampleTasksDownloadStatuses.loading;
 
   const onExampleTasksDownload = () => {
@@ -28,13 +31,16 @@ export const useFormButtonsRenderData = () => {
   const buttonContent = (
     areTasksDownloading ?
       <>Ładowanie...</> :
-      <>Pobierz przykładowe zadania</>
+      areExampletasksPresent ?
+        <>Pobrano</> :
+        <>Pobierz przykładowe zadania</>
   );
 
+  console.log(areExampletasksPresent)
   const formButtonsRenderData: ButtonRenderData[] = [
     {
       clickEventHandler: onExampleTasksDownload,
-      disabledCondition: areTasksDownloading,
+      disabledCondition: areTasksDownloading || areExampletasksPresent,
       content: buttonContent
     },
   ];
