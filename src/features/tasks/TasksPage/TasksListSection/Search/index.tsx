@@ -1,4 +1,4 @@
-import { queryKey } from "../../../../../common/constants/queryKey"
+import { QUERY_KEY } from "../../../../../common/constants/QUERY_KEY"
 import { useQueryParameter } from "../../../../../common/hooks/useQueryParameter"
 import { useReplaceQueryParameter } from "./useReplaceQueryParameter"
 import { Img, Wrapper } from "./styled"
@@ -8,12 +8,12 @@ import { useSelector } from "react-redux"
 
 export const Search = () => {
     const isTasksEmpty = useSelector(selectIsTasksListEmpty);
-    const query = useQueryParameter(queryKey);
+    const query = useQueryParameter(QUERY_KEY);
     const replaceQueryParameter = useReplaceQueryParameter();
 
     const onInputChange = ({ target }: { target: HTMLInputElement }) => {
         replaceQueryParameter({
-            key: queryKey,
+            key: QUERY_KEY,
             value: target.value,
         });
     };

@@ -3,14 +3,14 @@ import { selectHideDoneTasks, selectTasksLength, selectAreAllTasksDone } from ".
 import { List, } from "./styled";
 import { Message } from "../../../../../common/components/Message";
 import { selectIsSearchTasksEmpty } from "../../../tasksSlice";
-import { queryKey } from "../../../../../common/constants/queryKey";
+import { QUERY_KEY } from "../../../../../common/constants/QUERY_KEY";
 import { useQueryParameter } from "../../../../../common/hooks/useQueryParameter";
 import { RootState } from "../../../../../core/store";
 import { useAppSelector } from "../../../../../common/hooks/reduxTypedHooks";
 import { useRenderSearchingTasks } from "./useRenderSearchingTasks";
 
 const ListContent = () => {
-  const queryValue = useQueryParameter(queryKey);
+  const queryValue = useQueryParameter(QUERY_KEY);
   const renderSearchingTasks = useRenderSearchingTasks();
 
   const areAllTasksDone = useAppSelector(selectAreAllTasksDone);

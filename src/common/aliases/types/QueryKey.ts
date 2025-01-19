@@ -1,3 +1,3 @@
-import { queryKey } from "../../constants/queryKey"
+import { QUERY_KEY } from "../../constants/QUERY_KEY"
 
-export type QueryKey = typeof queryKey;
+export type QueryKey = typeof QUERY_KEY;

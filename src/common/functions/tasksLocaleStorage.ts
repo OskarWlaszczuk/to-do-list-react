@@ -1,7 +1,7 @@
 import { TaskData } from "../aliases/interfaces/TaskData";
-import { tasksListKey } from "../constants/tasksListKey";
+import { TASKS_LIST_KEY } from "../constants/TASKS_LIST_KEY";
 
-type TasksListKey = typeof tasksListKey;
+type TasksListKey = typeof TASKS_LIST_KEY;
 
 export const saveTasksInLocaleStorage = (tasks: TaskData[], tasksListKey: TasksListKey) => localStorage.setItem(tasksListKey, JSON.stringify(tasks));
 

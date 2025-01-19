@@ -1,12 +1,12 @@
 import { useHistory, useLocation } from "react-router-dom";
-import { queryKey } from "../../../../../common/constants/queryKey";
+import { QUERY_KEY } from "../../../../../common/constants/QUERY_KEY";
 
 export const useReplaceQueryParameter = () => {
     const history = useHistory();
     const location = useLocation();
 
     interface QueryParams {
-        key: typeof queryKey;
+        key: typeof QUERY_KEY;
         value: string;
     }
 

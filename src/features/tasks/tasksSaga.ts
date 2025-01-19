@@ -2,7 +2,7 @@ import { call, CallEffect, put, PutEffect, select, SelectEffect, takeEvery, take
 import { TaskData } from "../../common/aliases/interfaces/TaskData";
 import { getExampleTasksJson } from "./getExampleTasksJson";
 import { downloadExampleTasks, selectTasks, setTasks } from "./tasksSlice";
-import { tasksListKey } from "../../common/constants/tasksListKey";
+import { TASKS_LIST_KEY } from "../../common/constants/TASKS_LIST_KEY";
 import { saveTasksInLocaleStorage } from "../../common/functions/tasksLocaleStorage";
 
 
@@ -25,7 +25,7 @@ function* saveTasksInLocaleStorageHandler(): Generator<
     TaskData[]
 > {
     const tasks = yield select(selectTasks);
-    yield call(saveTasksInLocaleStorage, tasks, tasksListKey);
+    yield call(saveTasksInLocaleStorage, tasks, TASKS_LIST_KEY);
 };
 
 type DownloadExampleTasksAction = ReturnType<typeof downloadExampleTasks>;

@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { getInitialTasks } from '../../common/functions/tasksLocaleStorage';
 import { TaskData } from '../../common/aliases/interfaces/TaskData';
-import { tasksListKey } from '../../common/constants/tasksListKey';
+import { TASKS_LIST_KEY } from '../../common/constants/TASKS_LIST_KEY';
 import { RootState } from '../../core/store';
 import { getExampleTasksJson } from './getExampleTasksJson';
 
@@ -16,9 +16,9 @@ type TaskIdPayload = PayloadAction<TaskId>;
 type QueryValue = TaskData["content"] | null;
 
 const initialState: TasksState = {
-    tasks: getInitialTasks(tasksListKey),
+    tasks: getInitialTasks(TASKS_LIST_KEY),
     hideDoneTasks: false,
-}
+};
 
 export const tasksSlice = createSlice({
     name: 'tasks',

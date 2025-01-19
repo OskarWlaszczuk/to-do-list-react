@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from "../../../../../common/hooks/reduxTypedHooks";
-import { queryKey } from "../../../../../common/constants/queryKey";
+import { QUERY_KEY } from "../../../../../common/constants/QUERY_KEY";
 import { RootState } from "../../../../../core/store";
 import {
     removeTask,
@@ -21,7 +21,7 @@ import { useRenderTopButtonsPanel } from "./useRenderTopButtonsPanel";
 
 export const useRenderSearchingTasks = () => {
     const dispatch = useAppDispatch();
-    const queryValue = useQueryParameter(queryKey);
+    const queryValue = useQueryParameter(QUERY_KEY);
 
     const searchTasks = useAppSelector((state: RootState) => selectTaskByQuery(state, queryValue));
     const hideDoneTasks = useAppSelector(selectHideDoneTasks);
