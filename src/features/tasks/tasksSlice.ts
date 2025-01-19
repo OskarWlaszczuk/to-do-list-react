@@ -3,6 +3,7 @@ import { getInitialTasks } from '../../common/functions/tasksLocaleStorage';
 import { TaskData } from '../../common/aliases/interfaces/TaskData';
 import { tasksListKey } from '../../common/constants/tasksListKey';
 import { RootState } from '../../core/store';
+import { getExampleTasksJson } from './getExampleTasksJson';
 
 interface TasksState {
     tasks: ReturnType<typeof getInitialTasks>;
@@ -81,6 +82,18 @@ export const selectIsTasksListEmpty = (state: RootState) => selectTasks(state).l
 export const selectTasksLength = (state: RootState) => selectTasks(state).length;
 export const selectDoneTasksLength = (state: RootState) => selectTasks(state).filter(({ done }) => done).length;
 export const selectImportantTasksLength = (state: RootState) => selectTasks(state).filter(({ important, done }) => important && !done).length;
+
+let exampleTasksIds: string[];
+
+getExampleTasksJson().then(data => {
+    exampleTasksIds = data.map(({ id }) => id);
+});
+
+export const selectAreExampleTasksPresent = (state: RootState) => {
+    const tasksListIds = selectTasks(state).map(({ id }) => id);
+
+    return exampleTasksIds?.some(id => tasksListIds.includes(id))
+};
 
 export const selectTaskById = (state: RootState, taskId: TaskId) => selectTasks(state).find(({ id }) => id === taskId);
 export const selectTaskByQuery = (state: RootState, query: QueryValue) => {
