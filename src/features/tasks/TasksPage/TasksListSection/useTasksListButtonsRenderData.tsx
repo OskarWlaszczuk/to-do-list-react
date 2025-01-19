@@ -14,11 +14,11 @@ import { ButtonRenderData } from "../../../../common/aliases/interfaces/ButtonRe
 
 export const useTasksListButtonsRenderData = () => {
   const dispatch = useAppDispatch();
+  const query = useQueryParameter(queryKey);
 
   const hideDoneTasks = useAppSelector(selectHideDoneTasks);
   const areAllDone = useAppSelector(selectAreAllTasksDone);
   const areSomeDone = useAppSelector(selectAreSomeTasksDone);
-  const query = useQueryParameter(queryKey);
   const isSearchTasksEmpty = useAppSelector((state: RootState) => selectIsSearchTasksEmpty(state, query!));
 
   const tasksListButtonsRenderData: ButtonRenderData[] = [
