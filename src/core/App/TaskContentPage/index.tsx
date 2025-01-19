@@ -3,10 +3,10 @@ import { useParams } from "react-router-dom"
 import { selectTaskById } from "../../../features/tasks/tasksSlice";
 import Section from "../../../common/components/Section";
 import { PageTitle } from "../../../common/components/PageTitle";
-import { NotFoundMessage } from "../../../common/components/NotFoundMessage";
 import { RootState } from "../../store";
 import { SectionHeader } from "../../../common/components/SectionHeader";
 import { CenteredParagraph } from "../../../common/components/CenteredParagraph";
+import { Message } from "../../../common/components/Message";
 
 export const TaskContentPage = () => {
     const { id } = useParams();
@@ -19,7 +19,7 @@ export const TaskContentPage = () => {
                 title={
                     !!task ?
                         <SectionHeader $centered>{task.content}</SectionHeader> :
-                        <NotFoundMessage content="Nie znaleziono zadania" />
+                        <Message text="Nie znaleziono zadania" noResults />
                 }
                 body={
                     <>

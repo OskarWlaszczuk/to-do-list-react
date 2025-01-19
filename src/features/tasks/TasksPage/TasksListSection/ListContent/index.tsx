@@ -1,13 +1,6 @@
 import { useSelector } from "react-redux";
-import {
-  selectHideDoneTasks,
-  selectTasksLength,
-  selectAreAllTasksDone,
-} from "../../../tasksSlice";
-import {
-  List,
-} from "./styled";
-import { NotFoundMessage } from "../../../../../common/components/NotFoundMessage";
+import { selectHideDoneTasks, selectTasksLength, selectAreAllTasksDone } from "../../../tasksSlice";
+import { List, } from "./styled";
 import { Message } from "../../../../../common/components/Message";
 import { selectIsSearchTasksEmpty } from "../../../tasksSlice";
 import { queryKey } from "../../../../../common/constants/queryKey";
@@ -27,7 +20,7 @@ const ListContent = () => {
   const tasksLength = useAppSelector(selectTasksLength);
 
   const renderListContent = () => {
-    if (isSearchTasksEmpty && !!queryValue) return <NotFoundMessage content="Nie znaleziono zadania" />
+    if (isSearchTasksEmpty && !!queryValue) return <Message noResults text="Nie znaleziono zadania" />
     if (!tasksLength) return <Message text="Lista zadań jest pusta" />
     if (areAllTasksDone && hideDoneTasks) return <Message text="Lista zadań jest ukończona i ukryta" />
     else return <List>{renderSearchingTasks()}</List>
