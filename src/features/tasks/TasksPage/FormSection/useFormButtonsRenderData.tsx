@@ -4,46 +4,50 @@ import { downloadExampleTasks, selectAreExampleTasksPresent } from "../../tasksS
 import { ButtonRenderData } from "../../../../common/aliases/interfaces/ButtonRenderData";
 
 export const useFormButtonsRenderData = () => {
-  const dispatch = useAppDispatch();
-  const areExampletasksPresent = useAppSelector(selectAreExampleTasksPresent);
 
-  const exampleTasksDownloadStatuses = {
-    idle: "idle",
-    loading: "loading",
-  } as const;
+  const useExampleTasksButtonData = () => {
+    const dispatch = useAppDispatch();
+    const areExampletasksPresent = useAppSelector(selectAreExampleTasksPresent);
 
-  type ExampleTasksDownloadStatus = keyof typeof exampleTasksDownloadStatuses;
+    const exampleTasksDownloadStatuses = {
+      idle: "idle",
+      loading: "loading",
+    } as const;
 
-  const [exampleTasksDownloadStatus, setExampleTasksDwonloadStatus] = useState<ExampleTasksDownloadStatus>(
-    exampleTasksDownloadStatuses.idle
-  );
-  const areTasksDownloading = exampleTasksDownloadStatus === exampleTasksDownloadStatuses.loading;
+    type ExampleTasksDownloadStatus = keyof typeof exampleTasksDownloadStatuses;
 
-  const onExampleTasksDownload = () => {
-    setExampleTasksDwonloadStatus(exampleTasksDownloadStatuses.loading);
+    const [exampleTasksDownloadStatus, setExampleTasksDwonloadStatus] = useState<ExampleTasksDownloadStatus>(
+      exampleTasksDownloadStatuses.idle
+    );
+    const areTasksDownloading = exampleTasksDownloadStatus === exampleTasksDownloadStatuses.loading;
 
-    setTimeout(() => {
-      dispatch(downloadExampleTasks());
-      setExampleTasksDwonloadStatus(exampleTasksDownloadStatuses.idle);
-    }, 1000);
-  };
+    const onExampleTasksDownload = () => {
+      setExampleTasksDwonloadStatus(exampleTasksDownloadStatuses.loading);
 
-  const buttonContent = (
-    areTasksDownloading ?
-      <>Ładowanie...</> :
-      areExampletasksPresent ?
-        <>Pobrano</> :
-        <>Pobierz przykładowe zadania</>
-  );
+      setTimeout(() => {
+        dispatch(downloadExampleTasks());
+        setExampleTasksDwonloadStatus(exampleTasksDownloadStatuses.idle);
+      }, 1000);
+    };
 
-  console.log(areExampletasksPresent)
-  const formButtonsRenderData: ButtonRenderData[] = [
-    {
+    const buttonContent = (
+      areTasksDownloading ?
+        <>Ładowanie...</> :
+        areExampletasksPresent ?
+          <>Pobrano</> :
+          <>Pobierz przykładowe zadania</>
+    );
+
+    return {
       clickEventHandler: onExampleTasksDownload,
       disabledCondition: areTasksDownloading || areExampletasksPresent,
       content: buttonContent
-    },
-  ];
+    };
+  };
+
+  const exampleTasksDownloadButtonData = useExampleTasksButtonData();
+
+  const formButtonsRenderData: ButtonRenderData[] = [exampleTasksDownloadButtonData];
 
   return formButtonsRenderData;
 };
