@@ -2,15 +2,15 @@ import { Button, ButtonsContainer, Panel } from "./styled";
 import { SectionHeader } from "../SectionHeader";
 import { ButtonRenderData } from "../../aliases/interfaces/ButtonRenderData";
 
-interface HeaderPanelProps2 {
+interface HeaderPanelProps {
     title: string;
     buttonsRenderData: ButtonRenderData[];
 }
 
-export const HeaderPanel = ({ title, buttonsRenderData }: HeaderPanelProps2) => {
+export const HeaderPanel = ({ title, buttonsRenderData }: HeaderPanelProps) => {
 
     const renderButtons = () => (
-        <ButtonsContainer>
+        <ButtonsContainer $buttonsLength={buttonsRenderData.length}>
             {
                 buttonsRenderData.map(({ clickEventHandler, disabledCondition, content }, index) => (
                     <Button

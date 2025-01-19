@@ -17,15 +17,18 @@ export const Panel = styled.div`
     };
 `;
 
-export const ButtonsContainer = styled.section`
+interface ButtonsContainerProps {
+    $buttonsLength: number;
+}
+
+export const ButtonsContainer = styled.section<ButtonsContainerProps>`
     display: grid;
-    grid-template-columns: repeat(2, auto);
+    grid-template-columns:repeat(${({ $buttonsLength }) => $buttonsLength > 1 ? "2" : "1"}, 1fr);
     grid-gap: 10px;
     justify-content: space-between;
 
     @media (max-width:950px) {
         grid-template-columns: 1fr;
-        grid-template-rows: repeat(2, 1fr);
         justify-content: center;
     };
 `;
